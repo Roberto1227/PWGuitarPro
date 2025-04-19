@@ -1,0 +1,135 @@
+/* Estilo de la sección inicial */
+.introduccion {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+  }
+  
+  .introduccion h1 {
+    font-family: 'Oregano', serif;
+    font-size: 48px;
+    color: #92471f;
+    margin-bottom: 30px;
+  }
+  
+  .intro-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Espacio entre texto e imágenes */
+  }
+  
+  .texto {
+    width: 50%; /* Ocupa la mitad de la pantalla */
+    text-align: left; /* Alinea el texto a la izquierda */
+    text-align: justify;
+  }
+  
+  .texto p {
+    font-size: 18px;
+    color: #414247;
+    margin-bottom: 20px;
+  }
+  
+  .imagenes {
+    display: flex; /* Coloca las imágenes en una fila horizontal */
+    justify-content: center; /* Centra las imágenes dentro del contenedor */
+    gap: 20px; /* Espacio entre las imágenes */
+  }
+  
+  .imagenes img {
+    width: 50%; /* Cada imagen ocupa un 45% del ancho del contenedor */
+    max-width: 450px; /* Límite máximo de tamaño */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Efecto de sombra */
+  }
+  
+  /* Botón de comenzar */
+  .boton-comenzar {
+    margin-top: 30px;
+  }
+  
+  .boton-comenzar button {
+    background-color: #92471f;
+    color: #FFF;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .boton-comenzar button:hover {
+    background-color: #CE967B;
+  }
+
+  .contenido-container {
+    display: flex; /* Coloca el texto y la imagen uno al lado del otro */
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: space-around; /* Espacia los elementos */
+    gap: 20px; /* Espacio entre el texto y la imagen */
+  }
+  
+  .texto {
+    width: 50%; /* Texto ocupa la mitad del contenedor */
+    text-align: left; /* Alinea el texto a la izquierda */
+    text-align: justify;
+  }
+  
+  .texto h2 {
+    font-family: 'Oregano', serif;
+    font-size: 36px;
+    color: #92471f; /* Color del título */
+    margin-bottom: 20px;
+  }
+  
+  .texto p {
+    font-size: 18px;
+    color: #414247;
+    margin-bottom: 15px;
+  }
+  
+  .texto ul {
+    list-style-type: disc; /* Estilo de lista con puntos */
+    padding-left: 20px; /* Espaciado para las listas */
+    text-align: justify;
+  }
+  
+  .imagen {
+    width: 50%; /* Imagen ocupa la mitad del contenedor */
+    text-align: center;
+  }
+  
+  .imagen img {
+    width: 100%; /* Imagen ocupa el ancho completo del contenedor */
+    max-width: 300px; /* Tamaño máximo de la imagen */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para estilo */
+  }
+  
+  .botones {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 20px; /* Espacio entre los botones */
+    margin-top: 30px; /* Espaciado superior */
+  }
+  
+  .botones button {
+    background-color: #92471f;
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Estilo de sombra */
+    transition: background-color 0.3s ease;
+  }
+  
+  .botones button:hover {
+    background-color: #CE967B; /* Cambia el color al pasar el cursor */
+  }
+
+  
