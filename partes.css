@@ -1,0 +1,96 @@
+/* Botón de cierre con estilo icónico */
+.close-btn {
+    background-color: rgb(155, 0, 0);
+    color: #FFF;
+    border: none;
+    width: 60px; /* Ajusta tamaño para mayor visibilidad */
+    height: 60px;
+    border-radius: 50%;
+    font-size: 20px; /* Tamaño del texto/icono */
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Agrega efecto de profundidad */
+    transition: transform 0.2s ease; /* Animación suave al interactuar */
+  }
+  
+  .close-btn:hover {
+    transform: scale(1.1); /* Amplía el tamaño al pasar el cursor */
+  }
+  
+  .close-btn i {
+    font-size: 25px; /* Tamaño del icono */
+  }
+/* Fondo de la página */
+body {
+  background-image: url(Partes/bpa.jpg); 
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed; 
+  margin: 0;
+  padding: 0;
+}
+
+/* Cuadro de Información */
+.contenido {
+  position: relative; /* Permite usar z-index */
+  width: 85%; /* Reduce el tamaño del cuadro */
+  margin: 50px auto; /* Centra el cuadro horizontal y agrega espacio superior */
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Agrega sombra para separarlo del fondo */
+  z-index: 10; /* Mantiene el cuadro al frente */
+}
+
+/* Estilo de las diapositivas */
+.diapositiva img {
+  width: 70%; /* Reduce el tamaño de la imagen en las diapositivas */
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Botones */
+.botones button {
+  background-color: #92471f;
+  color: #FFF;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.botones button:hover {
+  background-color: #CE967B;
+}
+/* Barra de progreso */
+.barra-progreso {
+  position: fixed;
+  bottom: 0; /* Se encuentra al final de la página */
+  left: 0;
+  width: 100%; /* Cubre todo el ancho de la página */
+  height: 10px; /* Altura de la barra */
+  background-color: #E1E2E6; /* Fondo gris claro */
+}
+
+.barra-progreso .indicador {
+  height: 100%; /* Ocupa toda la altura de la barra */
+  width: 0%; /* Inicia en 0% y se expandirá dinámicamente */
+  background-color: #92471f; /* Color del progreso */
+  transition: width 0.3s ease; /* Suaviza la animación al cambiar de diapositiva */
+}
