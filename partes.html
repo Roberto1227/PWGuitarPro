@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partes de la Guitarra - GuitarPro</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="partes.css">
+  <link rel="stylesheet" href="secciones.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Importa Font Awesome -->
+</head>
+
+<body>
+  <header class="cabeza">
+    <div class="container">
+      <button class="close-btn" onclick="window.location.href='lecciones.html'">
+        <i class="fas fa-times"></i> <!-- Icono clásico de cerrar -->
+      </button>
+    </div>
+  </header>
+
+  <main class="contenido">
+
+    <section class="introduccion">
+      <h1>Partes de la Guitarra</h1>
+      <div class="intro-container">
+        <div class="texto">
+          <p>La guitarra, uno de los instrumentos más icónicos y versátiles, está compuesta por varias partes, cada una
+            de ellas es esencial para su funcionamiento y sonido. Conocer las partes de una guitarra no solo ayuda a
+            entender cómo produce su música, sino que también permite un mejor cuidado y mantenimiento del instrumento,
+            así como una interpretación más efectiva.</p>
+          <p>Cada componente tiene un propósito único: desde el mástil, que sirve como base para las notas y acordes,
+            hasta las cuerdas, las cuales generan el sonido cuando se tocan.</p>
+        </div>
+        <div class="imagenes">
+          <img src="Partes/PartesD.png" alt="Partes de la guitarra">
+          <img src="Partes/PartesIn.png" alt="Partes enumeradas de la guitarra">
+        </div>
+      </div>
+      <div class="boton-comenzar">
+        <button onclick="mostrarSiguiente()">Comenzar</button>
+      </div>
+    </section>
+
+    <section class="diapositiva" id="diapositiva-2">
+      <div class="contenido-container">
+        <div class="texto">
+          <h2>Cuerdas de la Guitarra</h2>
+          <p>Las cuerdas de la guitarra son fundamentales para la producción del sonido. Estas son las notas de cada cuerda, desde la más fina hasta la más gruesa:</p>
+          <ul>
+            <li>1ª Cuerda: Mi (E)</li>
+            <li>2ª Cuerda: Si (B)</li>
+            <li>3ª Cuerda: Sol (G)</li>
+            <li>4ª Cuerda: Re (D)</li>
+            <li>5ª Cuerda: La (A)</li>
+            <li>6ª Cuerda: Mi (E)</li>
+          </ul>
+        </div>
+        <div class="imagen">
+          <img src="Partes/CuerdasDeGuitarra.png" alt="Cuerdas de la guitarra">
+        </div>
+      </div>
+      <div class="botones">
+        <button onclick="mostrarAnterior()">Anterior</button>
+        <button onclick="mostrarSiguiente()">Siguiente</button>
+      </div>
+    </section>
+
+    <section class="diapositiva" id="diapositiva-3">
+      <div class="contenido-container">
+        <div class="texto">
+          <h2>Trastes de la Guitarra</h2>
+          <p>Los trastes de la guitarra son fundamentales para la precisión y la ejecución musical. Estas pequeñas divisiones metálicas en el mástil determinan la longitud vibratoria de las cuerdas, lo que permite producir notas específicas con solo presionar las cuerdas contra ellos. Su colocación está basada en cálculos matemáticos que aseguran que cada nota esté afinada correctamente, siguiendo las leyes acústicas.</p>
+          <p><strong>Importancia de los trastes:</strong></p>
+          <ul>
+            <li>Aseguran la precisión de las notas y acordes.</li>
+            <li>Permiten ejecutar escalas y melodías con facilidad.</li>
+            <li>Facilitan el aprendizaje y la interpretación musical.</li>
+            <li>Definen el tono al ajustar la longitud de las cuerdas.</li>
+          </ul>
+        </div>
+        <div class="imagen">
+          <img src="Partes/tra2.jpg" alt="Trastes de la guitarra">
+        </div>
+      </div>
+      <div class="botones">
+        <button onclick="mostrarAnterior()">Anterior</button>
+        <button onclick="mostrarSiguiente()">Siguiente</button>
+      </div>
+    </section>
+
+    <section class="diapositiva" id="diapositiva-4">
+      <div class="contenido-container">
+        <h2>Notas de los Trastes</h2>
+        <p>Los trastes en el mástil de la guitarra están diseñados para dividir las notas de manera precisa, siguiendo la escala musical. Cada traste corresponde a un semitono, permitiendo tocar notas ascendentes y descendentes en el rango de las cuerdas. Las notas en los trastes son fundamentales para ejecutar acordes, escalas y melodías con precisión. Esta imagen muestra una representación de las notas de los trastes en una guitarra estándar.</p>
+        <div class="imagen">
+          <img src="Partes/Notas de los trastes.png" alt="Notas de los trastes de la guitarra">
+        </div>
+      </div>
+      <div class="botones">
+        <button onclick="mostrarAnterior()">Anterior</button>
+        <button onclick="mostrarSiguiente()">Siguiente</button>
+      </div>
+    </section>
+
+    <div class="barra-progreso">
+      <div class="indicador"></div>
+    </div>
+  </main>
+
+  <script src="partes.js"></script>
+</body>
+
+</html>
