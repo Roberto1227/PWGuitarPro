@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerías GuitarPro</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Menores.css">
+</head>
+<body>
+    <h1 class="main-title">Acordes Básicos Menores</h1>
+    <div class="grid-container">
+        <div class="card">
+            <img src="imagenes/tar1.png" alt="Acorde 1">
+            <h3>Do Menor</h3>
+            <button class="btn" id="btnDoMenor">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar2.png" alt="Acorde 2">
+            <h3>Re Menor</h3>
+            <button class="btn" id="btnReMenor">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar3.png" alt="Acorde 3">
+            <h3>Mi Menor</h3>
+            <button class="btn" id="btnMiMenor">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar4.png" alt="Acorde 4">
+            <h3>Fa Menor</h3>
+            <button class="btn" id="btnFaMenor">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar5.png" alt="Acorde 5">
+            <h3>Sol Menor</h3>
+            <button class="btn" id="btnSolMenor">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar6.png" alt="Acorde 6">
+            <h3>La Menor</h3>
+            <button class="btn" id="btnLaMenor">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar7.png" alt="Acorde 7">
+            <h3>Si Menor</h3>
+            <button class="btn" id="btnSiMenor">Escuchar</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-container">
+            <img src="Mascota (1).png" alt="Mascota" class="mascota-icono">
+            <div class="link">
+                <h2>Síguenos en redes sociales</h2>
+                <ul>
+                    <li>
+                        <a href="https://instagram.com/GuitarPro" target="_blank">
+                            <i class="fab fa-instagram social-icon"></i> Instagram: @GuitarPro
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com/GuitarPro" target="_blank">
+                            <i class="fab fa-facebook-f social-icon"></i> Facebook: GuitarPro
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/50370365911?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20GuitarPro" target="_blank">
+                            <i class="fab fa-whatsapp social-icon"></i> WhatsApp: Contáctanos
+                        </a>
+                    </li>
+                </ul>
+                <p>Somos GuitarPro, tu mejor opción para aprender desde casa y de manera divertida.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        let audioActual = null;
+
+        function reproducirAcorde(rutaAudio) {
+          
+            if (audioActual) {
+                audioActual.pause();
+                audioActual.currentTime = 0; 
+            }
+
+            audioActual = new Audio(rutaAudio);
+            audioActual.play();
+        }
+
+        document.getElementById("btnDoMenor").addEventListener("click", function() {
+            reproducirAcorde("DoMenor.mp3");
+        });
+
+        document.getElementById("btnReMenor").addEventListener("click", function() {
+            reproducirAcorde("ReMenor.mp3");
+        });
+
+        document.getElementById("btnMiMenor").addEventListener("click", function() {
+            reproducirAcorde("MiMenor.mp3");
+        });
+
+        document.getElementById("btnFaMenor").addEventListener("click", function() {
+            reproducirAcorde("FaMenor.mp3");
+        });
+
+        document.getElementById("btnSolMenor").addEventListener("click", function() {
+            reproducirAcorde("SolMenor.mp3");
+        });
+
+        document.getElementById("btnLaMenor").addEventListener("click", function() {
+            reproducirAcorde("LaMenor.mp3");
+        });
+
+        document.getElementById("btnSiMenor").addEventListener("click", function() {
+            reproducirAcorde("SiMenor.mp3");
+        });
+    </script>
+</body>
+</html>

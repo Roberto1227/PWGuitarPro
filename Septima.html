@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerías GuitarPro</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Septima.css">
+</head>
+<body>
+    <h1 class="main-title">Acordes Básicos con Septima</h1>
+    <div class="grid-container">
+        <div class="card">
+            <img src="Acordes/Medio/7May/DoMayor7.png" alt="Acorde 1">
+            <h3>Do_7</h3>
+            <button class="btn" id="Acordes/Medio/7May/DoMayor7.mp3">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="Acordes/Medio/7May/ReMayor7.png" alt="Acorde 2">
+            <h3>Re_7</h3>
+            <button class="btn" id="Acordes/Medio/7May/ReMayor7.mp3">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="Acordes/Medio/7May/MiMayor7.png" alt="Acorde 3">
+            <h3>Mi_7</h3>
+            <button class="btn" id="Acordes/Medio/7May/MiMayor7.mp3">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="Acordes/Medio/7May/FaMayor7.png" alt="Acorde 4">
+            <h3>Fa_7</h3>
+            <button class="btn" id="Acordes/Medio/7May/FaMayor7.mp3">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="Acordes/Medio/7May/SolMayor7.png" alt="Acorde 5">
+            <h3>Sol_7</h3>
+            <button class="btn" id="Acordes/Medio/7May/SolMayor7.mp3">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="Acordes/Medio/7May/LaMayor7.png" alt="Acorde 6">
+            <h3>La_7</h3>
+            <button class="btn" id="Acordes/Medio/7May/LaMayor7.mp3">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="Acordes/Medio/7May/SiMayor7.png" alt="Acorde 7">
+            <h3>Si_7</h3>
+            <button class="btn" id="Acordes/Medio/7May/SiMayor7.mp3">Escuchar</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-container">
+            <img src="Mascota (1).png" alt="Mascota" class="mascota-icono">
+            <div class="link">
+                <h2>Síguenos en redes sociales</h2>
+                <ul>
+                    <li><a href="https://instagram.com/GuitarPro" target="_blank"><i class="fab fa-instagram social-icon"></i> Instagram</a></li>
+                    <li><a href="https://facebook.com/GuitarPro" target="_blank"><i class="fab fa-facebook-f social-icon"></i> Facebook</a></li>
+                    <li><a href="https://wa.me/50370365911?text=Hola" target="_blank"><i class="fab fa-whatsapp social-icon"></i> WhatsApp</a></li>
+                </ul>
+                <p>Somos GuitarPro, tu mejor opción para aprender desde casa.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       
+        let audioActual = null;
+
+      
+        function reproducirAcorde(rutaAudio) {
+            if (audioActual) {
+                audioActual.pause();
+                audioActual.currentTime = 0; 
+            }
+
+        
+            audioActual = new Audio(rutaAudio);
+            audioActual.play();
+        }
+       
+        document.getElementById("Acordes/Medio/7May/DoMayor7.mp3").addEventListener("click", function() {
+            reproducirAcorde("Acordes/Medio/7May/DoMayor7.mp3");
+        });
+
+        document.getElementById("Acordes/Medio/7May/ReMayor7.mp3").addEventListener("click", function() {
+            reproducirAcorde("Acordes/Medio/7May/ReMayor7.mp3");
+        });
+
+        document.getElementById("Acordes/Medio/7May/MiMayor7.mp3").addEventListener("click", function() {
+            reproducirAcorde("Acordes/Medio/7May/MiMayor7.mp3");
+        });
+
+        document.getElementById("Acordes/Medio/7May/FaMayor7.mp3").addEventListener("click", function() {
+            reproducirAcorde("Acordes/Medio/7May/FaMayor7.mp3");
+        });
+
+        document.getElementById("Acordes/Medio/7May/SolMayor7.mp3").addEventListener("click", function() {
+            reproducirAcorde("Acordes/Medio/7May/SolMayor7.mp3");
+        });
+
+        document.getElementById("Acordes/Medio/7May/LaMayor7.mp3").addEventListener("click", function() {
+            reproducirAcorde("Acordes/Medio/7May/LaMayor7.mp3");
+        });
+
+        document.getElementById("Acordes/Medio/7May/SiMayor7.mp3").addEventListener("click", function() {
+            reproducirAcorde("Acordes/Medio/7May/SiMayor7.mp3");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerías GuitarPro</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Mayores.css">
+</head>
+<body>
+    <h1 class="main-title">Acordes Intermedios Mayores Septima</h1>
+    <div class="grid-container">
+        <div class="card">
+            <img src="imagenes/tar1.png" alt="Acorde 1">
+            <h3>DoMayor7</h3>
+            <button class="btn" id="btnDoMayor7">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar2.png" alt="Acorde 2">
+            <h3>ReMayor7</h3>
+            <button class="btn" id="btnReMayor7">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar3.png" alt="Acorde 3">
+            <h3>MiMayor7</h3>
+            <button class="btn" id="btnMiMayor7">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar4.png" alt="Acorde 4">
+            <h3>FaMayor7</h3>
+            <button class="btn" id="btnFaMayor7">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar5.png" alt="Acorde 5">
+            <h3>SolMayor7</h3>
+            <button class="btn" id="btnSolMayor7">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar6.png" alt="Acorde 6">
+            <h3>LaMayor7</h3>
+            <button class="btn" id="btnLaMayor7">Escuchar</button>
+        </div>
+        <div class="card">
+            <img src="imagenes/tar7.png" alt="Acorde 7">
+            <h3>SiMayor7</h3>
+            <button class="btn" id="btnSiMayor7">Escuchar</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-container">
+            <img src="Mascota (1).png" alt="Mascota" class="mascota-icono">
+            <div class="link">
+                <h2>Síguenos en redes sociales</h2>
+                <ul>
+                    <li>
+                        <a href="https://instagram.com/GuitarPro" target="_blank">
+                            <i class="fab fa-instagram social-icon"></i> Instagram: @GuitarPro
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com/GuitarPro" target="_blank">
+                            <i class="fab fa-facebook-f social-icon"></i> Facebook: GuitarPro
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/50370365911?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20GuitarPro" target="_blank">
+                            <i class="fab fa-whatsapp social-icon"></i> WhatsApp: Contáctanos
+                        </a>
+                    </li>
+                </ul>
+                <p>Somos GuitarPro, tu mejor opción para aprender desde casa y de manera divertida.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        let audioActual = null;
+
+        function reproducirAcorde(rutaAudio) {
+           
+            if (audioActual) {
+                audioActual.pause();
+                audioActual.currentTime = 0; 
+            }
+
+            
+            audioActual = new Audio(rutaAudio);
+            audioActual.play();
+        }
+
+        
+        document.getElementById("btnDoMayor7").addEventListener("click", function() {
+            reproducirAcorde("DoMayor7.mp3");
+        });
+
+        document.getElementById("btnReMayor7").addEventListener("click", function() {
+            reproducirAcorde("ReMayor7.mp3");
+        });
+
+        document.getElementById("btnMiMayor7").addEventListener("click", function() {
+            reproducirAcorde("MiMayor7.mp3");
+        });
+
+        document.getElementById("btnFaMayor7").addEventListener("click", function() {
+            reproducirAcorde("FaMayor7.mp3");
+        });
+
+        document.getElementById("btnSolMayor7").addEventListener("click", function() {
+            reproducirAcorde("SolMayor7.mp3");
+        });
+
+        document.getElementById("btnLaMayor7").addEventListener("click", function() {
+            reproducirAcorde("LaMayor7.mp3");
+        });
+
+        document.getElementById("btnSiMayor7").addEventListener("click", function() {
+            reproducirAcorde("SiMayor7.mp3");
+        });
+    </script>
+</body>
+</html>
