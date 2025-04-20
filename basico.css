@@ -1,0 +1,237 @@
+/* basico.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 10px; /* Añade un poco de espacio en los bordes del viewport */
+  }
+  
+  /* Clase auxiliar para ocultar el modal */
+  .hidden {
+    display: none;
+  }
+  
+  /* Contenedor principal del modal */
+  .modal-window {
+    position: relative;
+    background: #ffffff;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 1100px; /* Incrementar el ancho máximo */
+    max-height: 90vh; /* Limitar el alto al 90% de la pantalla */
+    border-radius: 8px;
+    padding: 40px; /* Espaciado interno */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Sombra atractiva */
+    font-family: "Josefin Sans", serif;
+    margin: 50px auto; /* Márgenes arriba y abajo */
+    overflow-y: auto; /* Habilitar scroll vertical si es necesario */
+  }
+  
+  
+  /* Botón de cerrar en la esquina superior derecha */
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: #333;
+    cursor: pointer;
+    line-height: 1;
+  }
+  
+  
+  .slide {
+    padding: 15px;
+  }
+  
+  /* Slide de Introducción */
+  #introSlide {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  #introSlide h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  #introSlide p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Botón para comenzar la lección */
+  .start-btn {
+    padding: 10px 20px;
+    background-color: #92471f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .start-btn:hover {
+    background-color: #ce967b;
+  }
+  
+  /* Slide de Acorde */
+  #chordSlide h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Contenedor para la sección de acorde, con panel izquierdo y derecho */
+  .chord-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Aumenta el espacio entre los paneles */
+  }
+  
+  
+  .chord-left,
+  .chord-right {
+    flex: 1 1 250px;
+  }
+  
+  /* Panel izquierdo: Imagen y botón de sonido */
+  .chord-left {
+    text-align: center;
+  }
+  
+  .chord-left img {
+    width: 100%; /* Usar toda la anchura disponible */
+    max-width: 400px; /* Tamaño máximo más grande */
+    border-radius: 10px; /* Redondear los bordes */
+  }
+  
+
+/* Botón de sonido más grande */
+.sound-button {
+    display: block;
+    margin: 15px auto; /* Más espacio debajo de la imagen */
+    padding: 20px; /* Tamaño más grande del botón */
+    background: #92471f; /* Color de fondo */
+    color: #fff; /* Color del ícono */
+    border: none;
+    border-radius: 50%; /* Forma circular */
+    cursor: pointer;
+    font-size: 24px; /* Tamaño más grande del ícono */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Sombra más visible */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
+  }
+  
+  .sound-button:hover {
+    background-color: #ce967b; /* Cambiar color al pasar el mouse */
+    transform: scale(1.1); /* Aumentar ligeramente el tamaño al pasar el mouse */
+  }
+  
+  /* Panel derecho: Descripción e imagen de posición de dedos */
+  .chord-right {
+    font-size: 16px;
+    color: #444;
+  }
+  
+  .chord-right p {
+    margin-bottom: 10px;
+  }
+  
+  .chord-right img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+  }
+  
+  /* Navegación entre acordes */
+  .chord-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .nav-btn {
+    padding: 8px 16px;
+    background-color: #92471f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-btn:hover {
+    background-color: #ce967b;
+  }
+  
+  /* Slide Final */
+  #finalSlide {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  #finalSlide h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  #finalSlide p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .finish-btn {
+    padding: 10px 20px;
+    background-color: #92471f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .finish-btn:hover {
+    background-color: #ce967b;
+  }
+  
+  /* RESPUESTAS PARA DISPOSITIVOS PEQUEÑOS */
+  @media (max-width: 480px) {
+    .modal-window {
+      padding: 15px 20px;
+    }
+    .chord-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .advice-box {
+    margin-top: 10px; /* Reducir espacio hacia arriba */
+    padding: 10px 15px; /* Tamaño más pequeño */
+    background: #f8b88b; /* Cambiar a un solo color */
+    border-radius: 4px; /* Bordes menos redondeados */
+    text-align: center;
+  }
+  
+  .advice-box p {
+    font-family: "Josefin Sans", serif; /* Cambiar la fuente */
+    font-size: 14px; /* Reducir el tamaño del texto */
+    color: #333; /* Texto más neutral */
+    margin: 0; /* Eliminar margen extra */
+  }
