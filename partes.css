@@ -94,3 +94,133 @@ body {
   background-color: #92471f; /* Color del progreso */
   transition: width 0.3s ease; /* Suaviza la animación al cambiar de diapositiva */
 }
+/* Contenedor principal para la diapositiva 4 */
+#diapositiva-4 {
+  text-align: center; /* Centra todo el contenido */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilo del título */
+#diapositiva-4 h2 {
+  font-family: 'Oregano', serif;
+  font-size: 36px;
+  color: #92471f;
+  margin-bottom: 20px;
+}
+
+/* Estilo del texto descriptivo */
+#diapositiva-4 p {
+  font-size: 18px;
+  color: #414247;
+  text-align: justify; /* Justifica el texto */
+  margin: 0 auto 30px auto; /* Espaciado inferior */
+  max-width: 800px; /* Limita el ancho del texto */
+}
+
+/* Estilo de la imagen */
+.imagen-notas {
+  text-align: center; /* Centra la imagen */
+  margin: 0 auto; /* Centra horizontalmente */
+}
+
+.imagen-notas img {
+  width: 100%; /* Imagen ocupa todo el ancho disponible */
+  max-width: 800px; /* Tamaño máximo más grande */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Sombra más profunda */
+  margin-top: 20px; /* Espaciado superior */
+}
+
+.imagenmd {
+  width: 50%; /* Imagen ocupa la mitad del contenedor */
+  text-align: center;
+}
+
+.imagenmd img {
+  width: 100%; /* Imagen ocupa el ancho completo del contenedor */
+  max-width: 400px; /* Tamaño máximo de la imagen */
+  border-radius: 8px; /* Bordes redondeados */
+
+}
+.imagenmi {
+  width: 50%; /* Imagen ocupa la mitad del contenedor */
+  text-align: center;
+}
+.imagenmi img {
+  width: 100%; /* Imagen ocupa el ancho completo del contenedor */
+  max-width: 400px; /* Tamaño máximo de la imagen */
+  border-radius: 8px; /* Bordes redondeados */
+
+}
+.imagenpd {
+  width: 50%; /* Imagen ocupa la mitad del contenedor */
+  text-align: center;
+}
+.imagenpd img {
+  width: 100%; /* Imagen ocupa el ancho completo del contenedor */
+  max-width: 500px; /* Tamaño máximo de la imagen */
+  border-radius: 8px; /* Bordes redondeados */
+
+}
+/* Contenedor principal para la diapositiva final */
+#diapositiva-final {
+  text-align: center;
+  margin: 0 auto;
+  padding: 40px;
+  animation: celebracion 2s ease-in-out; /* Animación de celebración */
+}
+
+
+#diapositiva-final h1 {
+  font-family: 'Oregano', serif;
+  font-size: 48px;
+  color: #92471f; /* Color cálido y festivo */
+  margin-bottom: 30px;
+}
+
+
+#diapositiva-final p {
+  font-size: 18px;
+  color: #414247;
+  text-align: center;
+  margin: 0 auto 30px auto; /* Espaciado inferior */
+  max-width: 800px; /* Limita el ancho del texto */
+}
+#confetti-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* El confeti no interfiere con los clics o botones */
+}
+
+.boton-final {
+  background-color: #92471f; /* Color llamativo y cálido */
+  color: #FFF; /* Texto en blanco para contraste */
+  border: none;
+  padding: 20px 40px;
+  font-size: 20px;
+  border-radius: 10px; /* Bordes suaves */
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Efecto flotante */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.boton-final:hover {
+  background-color: #CE967B; /* Cambia el color al pasar el cursor */
+  transform: scale(1.1); /* Hace el botón más grande al interactuar */
+}
+
+@keyframes celebracion {
+  0% {
+    background-color: #FFFFFF; /* Fondo blanco inicial */
+  }
+  50% {
+    background-color: #FFD700; /* Color dorado para destacar la celebración */
+  }
+  100% {
+    background-color: #FFFFFF; /* Regresa al fondo blanco */
+  }
+}
