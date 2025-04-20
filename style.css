@@ -346,7 +346,7 @@ p {
 .link ul li a {
     text-decoration: none; 
     font-size: 16px;
-    color: #000; 
+    color: #ffffff; 
 }
 
 .mascota-icono {
@@ -360,4 +360,4 @@ p {
         margin-bottom: 15px;
         transition: color 0.3s ease;
     }
-    }
+}
