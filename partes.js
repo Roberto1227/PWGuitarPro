@@ -43,14 +43,28 @@ function mostrarSiguiente() {
   actualizarBarraProgreso(); // Actualiza la barra de progreso
 }
 
-// Función para mostrar la diapositiva anterior
 function mostrarAnterior() {
-  const diapositivas = document.querySelectorAll('.diapositiva'); // Seleccionar diapositivas
-  diapositivas[indiceActual].style.display = 'none'; // Oculta la diapositiva actual
-  indiceActual = (indiceActual - 1 + diapositivas.length) % diapositivas.length; // Retrocede al índice anterior
-  diapositivas[indiceActual].style.display = 'block'; // Muestra la diapositiva anterior
+  const introduccion = document.querySelector('.introduccion'); // Seleccionar la introducción
+  const diapositivas = document.querySelectorAll('.diapositiva'); // Seleccionar todas las diapositivas
 
-  actualizarBarraProgreso(); // Actualiza la barra de progreso
+  // Si estamos en la introducción, no hacemos nada
+  if (indiceActual === 0 && introduccion && introduccion.style.display === 'none') {
+    introduccion.style.display = 'block'; // Muestra la introducción
+    diapositivas[indiceActual].style.display = 'none'; // Oculta la diapositiva actual
+    return; // Salimos de la función porque estamos ahora en la introducción
+  }
+
+  // Oculta la diapositiva actual
+  diapositivas[indiceActual].style.display = 'none';
+
+  // Calcula el índice anterior correctamente
+  indiceActual = (indiceActual - 1 + diapositivas.length) % diapositivas.length;
+
+  // Muestra la diapositiva anterior
+  diapositivas[indiceActual].style.display = 'block';
+
+  // Actualiza la barra de progreso
+  actualizarBarraProgreso();
 }
 
 function actualizarBarraProgreso() {
