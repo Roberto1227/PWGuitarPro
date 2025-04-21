@@ -146,7 +146,7 @@ body {
 }
 
 .footer {
-    background-color: #222;
+    background-color: #20110A;
     padding: 20px;
     color: #fff;
     text-align: center;
@@ -176,7 +176,7 @@ body {
 .link h2 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #ffb900;
+    color: #ffffff;
 }
 
 .link ul {
@@ -193,13 +193,13 @@ body {
 
 .link ul li a {
     text-decoration: none;
-    color: #ffb900;
+    color: #ffffff;
     transition: color 0.3s ease;
     margin-left: 10px;
 }
 
 .link ul li a:hover {
-    color: #fff;
+    color: #CE9;
 }
 
 .link p {

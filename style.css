@@ -274,90 +274,75 @@ p {
 
 /* Estilos del pie de página */
 .footer {
-    padding: 50px 0;
     background-color: #20110A;
-    color: #FFFDFC;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 20px;
+    color: #fff;
     text-align: center;
 }
 
-.footer .link h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #FFFDFC;
-}
-
-.footer .link ul {
-    margin-bottom: 20px;
-}
-
-.footer .link ul li {
-    margin-bottom: 10px;
-}
-
-.footer .link ul li a:hover {
-    color: #CE967B;
-}
-
-.footer p {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #FFFDFC;
-    max-width: 600px;
-}
 .social-container {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 20px;
-}
-
-.social-container {
-    display: flex; 
+    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: center; 
-    gap: 20px; 
-    padding: 20px; 
-}
-
-.link {
-    text-align: center; 
-}
-
-.link h2 {
-    margin-bottom: 15px; 
-}
-
-.link ul {
-    list-style: none; 
-    padding: 0; 
-    margin: 0; 
-}
-
-.link ul li {
-    margin-bottom: 10px; 
-}
-
-.link ul li a {
-    text-decoration: none; 
-    font-size: 16px;
-    color: #ffffff; 
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
 }
 
 .mascota-icono {
-    width: 350px; 
-    height: auto; 
+    max-width: 150px;
+    height: auto;
     flex-shrink: 0;
-    footer .link ul li a {
-        font-size: 16px;
-        color: #C5C5C5;
-        display: block;
-        margin-bottom: 15px;
-        transition: color 0.3s ease;
-    }
+}
+
+.link {
+    text-align: left;
+    max-width: 600px;
+}
+
+.link h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.link ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link ul li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.link ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0.3s ease;
+    margin-left: 10px;
+}
+
+.link ul li a:hover {
+    color: #CE967B;
+}
+
+.link p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.social-icon {
+    font-size: 20px;
+    color: #ec8d40;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #fff;
 }
