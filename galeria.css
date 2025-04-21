@@ -20,7 +20,6 @@ header {
     z-index: 1000;
 }
 
-
 body {
     margin-top: 80px; 
 }
@@ -52,9 +51,9 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.swiper-slide:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+.swiper-slide-active {
+    transform: scale(1.2); /* Escala mayor para la tarjeta activa */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 
 .swiper-slide img {
@@ -125,6 +124,25 @@ body {
 
 .swiper-button-prev {
     left: 10px;
+}
+
+/* Ajuste de posiciones para el carrusel */
+.swiper-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide:nth-child(2) {
+    order: 1; /* Tarjeta de "Intermedio" hacia el extremo izquierdo */
+}
+
+.swiper-slide:nth-child(1) {
+    order: 2; /* Tarjeta de "Básico" centrada */
+}
+
+.swiper-slide:nth-child(3) {
+    order: 3; /* Tarjeta de "Avanzado" hacia el extremo derecho */
 }
 
 .footer {
@@ -199,9 +217,4 @@ body {
 
 .social-icon:hover {
     color: #fff;
-}
-.swiper {
-    width: 80%;
-    margin: 0 auto; 
-    padding: 20px 0;
 }
