@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecciones Básicas - GuitarPro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lecciones.css">
+    <link rel="stylesheet" href="modales.css">
+</head>
+<body>
+   
+    <header class="header">
+        <div class="menu container">
+            <a href="index.html" class="logo">
+                <img src="imagenes/logo.png" alt="GuitarPro" style="height: 70px; vertical-align: middle;">
+                GuitarPro
+            </a>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="lecciones.html">Lecciones</a></li>
+                    <li><a href="#">Galería</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="medio">
+        <h2>Lecciones Intermedias de Guitarra</h2>
+        <div class="tarjetas-container">
+
+            <div class="tarjeta">
+                <img src="Acordes/Medio/7may.png" alt="Acordes Mayores Parte 1">
+                <h3>Acordes 7 Mayores(Do, Re, Mi, Fa, Sol,La,Si)</h3>
+                <p>Aprende a tocar acordes mayores de forma sencilla.</p>
+                <button class="btn-2" data-modal="mayores1">Aprender</button>
+            </div>
+          
+            <div class="tarjeta">
+                <img src="Acordes/Medio/7men.png" alt="Acordes Mayores Parte 2">
+                <h3>Acordes 7 Menores(Do, Re, Mi, Fa, Sol,La,Si)</h3>
+                <p>Continúa tu aprendizaje con más acordes mayores.</p>
+                <button class="btn-2" data-modal="mayores2">Aprender</button>
+            </div>
+            
+            <div class="tarjeta">
+                <img src="Acordes/Medio/sexta.png" alt="Acordes Menores Parte 1">
+                <h3>Acordes de 6 (Do, Re, Mi, Fa, Sol, La, Si)</h3>
+                <p>Descubre cómo tocar acordes menores con facilidad.</p>
+                <button class="btn-2" data-modal="menores1">Aprender</button>
+            </div>
+         
+            <div class="tarjeta">
+                <img src="Acordes/Medio/sus2.png" alt="Acordes Menores Parte 2">
+                <h3>Acordes Suspendidos 2 (Do, Re, Mi, Fa, Sol, La, Si)</h3>
+                <p>Avanza con más acordes menores y mejora tus técnicas.</p>
+                <button class="btn-2" data-modal="menores2">Aprender</button>
+            </div>
+          
+            <div class="tarjeta">
+                <img src="Acordes/Medio/sus4.png" alt="Acordes de 7 Parte 1">
+                <h3>Acordes Suspendidos 4 (Do, Re, Mi, Fa, Sol, La, Si)</h3>
+                <p>Explora los acordes de séptima y su sonido característico.</p>
+                <button class="btn-2" data-modal="acordes71">Aprender</button>
+            </div>
+           
+            <div class="tarjeta">
+                <img src="Acordes/Medio/dis.png" alt="Acordes de 7 Parte 2">
+                <h3>Acordes de Disminuidos (Do, Re, Mi, Fa, Sol, La, Si)</h3>
+                <p>Finaliza tu aprendizaje con los acordes de séptima restantes.</p>
+                <button class="btn-2" data-modal="acordes72">Aprender</button>
+            </div>
+
+            <div class="tarjeta">
+                <img src="Acordes/Medio/aum.png" alt="Acordes de 7 Parte 2">
+                <h3>Acordes de Aumentados (Do, Re, Mi, Fa, Sol, La, Si)</h3>
+                <p>Finaliza tu aprendizaje con los acordes de séptima restantes.</p>
+                <button class="btn-2" data-modal="acordes72">Aprender</button>
+            </div>
+
+        </div>
+    </section>
+    <!-- Modal de la lección interactiva -->
+<div id="lessonModal" class="modal-overlay hidden">
+    <div class="modal-window">
+      <!-- Icono de cerrar (se ubicará en la esquina superior derecha) -->
+      <button class="modal-close" id="modalClose">&times;</button>
+  
+      <!-- Slide Introductoria -->
+      <div class="slide" id="introSlide">
+        <h2 id="lessonName">Nombre de la Lección</h2>
+        <p id="lessonBrief">
+          Breve descripción de la lección para familiarizarte con los acordes.
+        </p>
+        <button id="startLesson" class="start-btn">Iniciar</button>
+      </div>
+  
+      <!-- Slide de Acorde (se usarán múltiples instancias o se actualizará dinámicamente) -->
+      <div class="slide" id="chordSlide" style="display: none;">
+        <h2 id="chordName">Nombre del Acorde</h2>
+        <div class="chord-container">
+          <!-- Panel Izquierdo: Imagen del acorde y botón para sonido -->
+          <div class="chord-left">
+            <img id="chordImage" src="ruta/a/imagen-acorde.jpg" alt="Imagen del acorde">
+            <button id="playSound" class="sound-button">
+                <i class="fas fa-volume-up"></i> 
+            </button>
+          </div>
+          <!-- Panel Derecho: Descripción y diagrama de posiciones -->
+          <div class="chord-right">
+            <p id="chordDescription">Breve descripción del acorde.</p>
+            <img id="fingerPosition" src="ruta/a/imagen-posicion.jpg" alt="Posición de los dedos">
+          </div>
+        </div>
+                    <!-- Contenedor del consejo -->
+        <div class="advice-box">
+            <p id="adviceText">"Recuerda: ¡El aprendizaje es un viaje, no un destino! Dedica tiempo y disfruta cada acorde." 🌟</p>
+        </div>
+
+        <!-- Navegación entre acordes -->
+        <div class="chord-navigation">
+          <button id="prevChord" class="nav-btn">Anterior</button>
+          <button id="nextChord" class="nav-btn">Siguiente</button>
+        </div>
+      </div>
+  
+      <!-- Slide Final -->
+      <div class="slide" id="finalSlide" style="display: none;">
+        <h2>¡Felicitaciones!</h2>
+        <p>Has completado la lección.</p>
+        <button id="finishLesson" class="finish-btn">Finalizar</button>
+      </div>
+    </div>
+  </div>
+
+    <footer class="footer">
+        <div class="social-container">
+            <div class="link">
+                <h2>Síguenos en redes sociales</h2>
+                <ul>
+                    <li>
+                        <a href="https://instagram.com/GuitarPro" target="_blank">
+                            <i class="fab fa-instagram social-icon"></i> @GuitarPro en Instagram
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com/GuitarPro" target="_blank">
+                            <i class="fab fa-facebook-f social-icon"></i> GuitarPro en Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/50370365911?text=Hola%2C%20quisiera%20más%20información%20sobre%20sus%20servicios" target="_blank">
+                            <i class="fab fa-whatsapp social-icon"></i> Contáctanos en WhatsApp
+                        </a>
+                    </li>
+                </ul>
+                <p>Somos GuitarPro, tu mejor opción para aprender desde casa y de manera divertida.</p>
+            </div>
+            <img src="imagenes/Mascota (1).png" alt="Mascota" class="mascota-icono">
+        </div>
+    </footer>
+
+    <script src="medio.js" defer></script>
+</body>
+</html>
