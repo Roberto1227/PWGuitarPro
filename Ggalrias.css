@@ -1,0 +1,187 @@
+/* General */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Helvetica, Arial, sans-serif;
+    background: url('imagenes/bg.jpg') no-repeat center center fixed; /* Fondo general */
+    background-size: cover;
+}
+
+header {
+    background-color: #3d3e3d; 
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    position: fixed; 
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+body {
+    margin-top: 80px; 
+}
+
+/* Título principal */
+.main-title {
+    text-align: center;
+    font-size: 36px;
+    color: #e8e2e2;
+    margin: 20px 0;
+    text-transform: uppercase;
+}
+
+/* Estilos generales del carrusel */
+.swiper {
+    width: 90%; /* Ancho del carrusel */
+    height: 300px; /* Altura ajustada del carrusel */
+    margin: 0 auto;
+    padding: 30px 0;
+    position: relative;
+}
+
+.swiper-slide {
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    width: 250px; /* Ancho de la tarjeta */
+    height: 280px; /* Altura de la tarjeta */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.swiper-slide:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.swiper-slide img {
+    width: 100%; /* Imagen ocupa todo el ancho de la tarjeta */
+    height: 70%; /* Imagen ocupa el 70% de la tarjeta */
+    object-fit: cover; /* Evita distorsiones */
+    border-radius: 10px 10px 0 0; /* Esquinas redondeadas arriba */
+    display: block;
+    margin: 0;
+}
+
+.product-content {
+    position: relative;
+    z-index: 2;
+    height: 30%; /* Contenido ocupa el 30% de la tarjeta */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+    border-radius: 0 0 10px 10px; /* Esquinas redondeadas abajo */
+    padding: 10px;
+}
+
+.product-content h3 {
+    font-size: 18px; /* Tamaño ajustado del título */
+    margin: 5px 0;
+    color: #ffb900;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.product-content p {
+    font-size: 12px; /* Tamaño ajustado del texto */
+    margin: 5px 0;
+    color: #fff;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffb900;
+    font-size: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.footer {
+    background-color: #222;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.mascota-icono {
+    max-width: 150px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.link {
+    text-align: left;
+    max-width: 600px;
+}
+
+.link h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ffb900;
+}
+
+.link ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link ul li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.link ul li a {
+    text-decoration: none;
+    color: #ffb900;
+    transition: color 0.3s ease;
+    margin-left: 10px;
+}
+
+.link ul li a:hover {
+    color: #fff;
+}
+
+.link p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.social-icon {
+    font-size: 20px;
+    color: #ffb900;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #fff;
+}
