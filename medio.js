@@ -390,6 +390,21 @@ const acordes7Mayores = [
       console.error("Lección no encontrada: ", lessonType);
       return;
     }
+
+    const lessonBriefText = 
+  lessonType === "acordes7Mayores"
+    ? "Descubre la combinación única de triadas mayores y séptimas mayores. Ideal para agregar brillantez y elegancia a tus composiciones."
+    : lessonType === "acordes7Menores"
+    ? "Explora los tonos melancólicos y profundos que ofrecen los acordes menores con séptima menor."
+    : lessonType === "acordes6"
+    ? "Aprende cómo los acordes de sexta enriquecen tus armonías con una atmósfera cálida y suave."
+    : lessonType === "acordesSuspendidos2"
+    ? "Conoce el efecto moderno y abierto que se logra al sustituir la tercera por la segunda."
+    : lessonType === "acordesSuspendidos4"
+    ? "Domina el uso de la cuarta en lugar de la tercera para crear tensión y una sensación expectante."
+    : lessonType === "acordesDisminuidos"
+    ? "Descubre cómo la triada disminuida y la séptima menor generan incertidumbre y dramatismo."
+    : "Aprende a utilizar la quinta aumentada para añadir un sonido expansivo y enigmático a tus melodías.";
   
     currentChordIndex = 0;
     lessonModal.classList.remove("hidden");
@@ -402,4 +417,5 @@ const acordes7Mayores = [
       : `Lección: ${lessonType}`;
   
     document.getElementById("lessonName").textContent = lessonNameText;
+    document.getElementById("lessonBrief").textContent = lessonBriefText;
   }
