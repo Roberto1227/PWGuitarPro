@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria - Acordes de Guitarra</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lecciones.css">
+    <link rel="stylesheet" href="juegos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-bg">
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="menu container">
+            <a href="index.html" class="logo">
+                <img src="imagenes/logo.png" alt="GuitarPro" style="height: 70px; vertical-align: middle;">
+                GuitarPro
+            </a>
+            <label for="menu">
+                <img src="imagenes/menu.png" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="lecciones.html">Lecciones</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="afinador.html">Afinador</a></li>
+                    <li class="login"><a href="registro_login.html">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="game-container">
+            <h2>Juego de Memoria - Acordes de Guitarra</h2>
+            <div class="game-info">
+                <p>Pares encontrados: <span id="pairs-found">0</span></p>
+                <p>Intentos: <span id="attempts">0</span></p>
+            </div>
+            <div class="memory-game" id="memory-game">
+                <!-- Las cartas se generarán dinámicamente con JavaScript -->
+            </div>
+            <button id="start-game" class="btn">Iniciar Juego</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="social-container">
+            <img src="Imagenes/Mascota v2.png" alt="Mascota" class="mascota-icono">
+            <div class="link">
+                <h2>Síguenos en redes sociales</h2>
+                <ul>
+                    <li>
+                        <a href="https://instagram.com/GuitarPro" target="_blank">
+                            <i class="fab fa-instagram social-icon"></i> Instagram: @GuitarPro
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com/GuitarPro" target="_blank">
+                            <i class="fab fa-facebook-f social-icon"></i> Facebook: GuitarPro
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/50370365911?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20GuitarPro" target="_blank">
+                            <i class="fab fa-whatsapp social-icon"></i> WhatsApp: Contáctanos
+                        </a>
+                    </li>
+                </ul>
+                <p>Somos GuitarPro, tu mejor opción para aprender desde casa y de manera divertida.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="juegos.js"></script>
+</body>
+</html>
