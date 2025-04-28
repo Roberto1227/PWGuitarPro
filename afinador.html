@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecciones - GuitarPro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lecciones.css">
+    <link rel="stylesheet" href="afinador.css">
+   
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="menu container">
+            <a href="index.html" class="logo">
+                <img src="imagenes/logo.png" alt="GuitarPro" style="height: 70px; vertical-align: middle;">
+                GuitarPro
+            </a>
+            <label for="menu">
+                <img src="imagenes/menu.png" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="lecciones.html">Lecciones</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="afinador.html">Afinador</a></li>
+                    <li class="login"><a href="registro_login.html">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<body>
+    <div class="tuner-container">
+        <h1>Afinador de Guitarra</h1>
+
+        <!-- Indicador de afinación -->
+        <div class="tuner-display">
+            <div class="needle"></div>
+            <div class="center-circle"></div>
+        </div>
+
+        <!-- Información de frecuencia -->
+        <p>Frecuencia detectada: <span id="frequency">--</span> Hz</p>
+        <p>Estado: <span id="status">--</span></p>
+
+        <!-- Botón de inicio -->
+        <button id="start">
+            <i class="fas fa-microphone"></i> Iniciar Afinador
+        </button>
+    </div>
+    
+    <footer class="footer">
+        <div class="social-container">
+            <img src="Imagenes/Mascota v2.png" alt="Mascota" class="mascota-icono">
+            <div class="link">
+                <h2>Síguenos en redes sociales</h2>
+                <ul>
+                    <li>
+                        <a href="https://instagram.com/GuitarPro" target="_blank">
+                            <i class="fab fa-instagram social-icon"></i> Instagram: @GuitarPro
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com/GuitarPro" target="_blank">
+                            <i class="fab fa-facebook-f social-icon"></i> Facebook: GuitarPro
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/50370365911?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20GuitarPro" target="_blank">
+                            <i class="fab fa-whatsapp social-icon"></i> WhatsApp: Contáctanos
+                        </a>
+                    </li>
+                </ul>
+                <p>Somos GuitarPro, tu mejor opción para aprender desde casa y de manera divertida.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="afinador.js"></script>
+</body>
+</html>

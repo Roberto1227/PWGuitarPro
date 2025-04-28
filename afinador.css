@@ -1,0 +1,139 @@
+/* Reset básico de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+
+  
+  /* Contenedor principal del afinador */
+  .tuner-container {
+    max-width: 400px;
+    margin: 60px auto;
+    background-color: #F9FAFC;
+    padding: 30px 20px 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  /* Título */
+  .tuner-container h1 {
+    font-family: "Oregano", serif;
+    font-size: 40px;
+    color: #323337;
+    margin-bottom: 20px;
+  }
+  
+  /* Dial semicircular (display del afinador) */
+  .tuner-display {
+    position: relative;
+    width: 300px;
+    height: 150px;
+    margin: 0 auto;
+    background: #F9FAFC;
+    border-top-left-radius: 300px;
+    border-top-right-radius: 300px;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  /* Indicadores laterales: Flat y Sharp */
+  .tuner-display::before,
+  .tuner-display::after {
+    position: absolute;
+    bottom: 10px;
+    font-size: 24px;
+    color: #92471f;
+    font-family: "Josefin Sans", serif;
+  }
+  .tuner-display::before {
+    content: "b";
+    left: 15px;
+  }
+  .tuner-display::after {
+    content: "#";
+    right: 15px;
+  }
+  
+  /* Aguja del afinador */
+  .needle {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    width: 2px;
+    height: 70px;
+    background-color: #92471f;
+    transform-origin: bottom center;
+    transition: transform 0.2s ease-out;
+  }
+  
+  /* Rectángulo central que indica la zona de "afinación correcta" */
+  .center-circle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 80px;
+    height: 30px;
+    background-color: #FFF;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  /* Información de frecuencia y estado */
+  .tuner-container p {
+    font-size: 18px;
+    color: #414247;
+    margin: 15px 0;
+  }
+  
+  /* Botón de inicio con icono de micrófono */
+  #start {
+    background-color: #92471f;
+    color: #F9FAFC;
+    font-size: 18px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+  }
+  #start:hover {
+    background-color: #CE967B;
+  }
+  
+  /* Si usas Font Awesome ya se resuelve el icono. Opcionalmente, puedes ajustar el tamaño del ícono: */
+  #start i {
+    font-size: 20px;
+  }
+  
+  /* (Opcional) Estilos para mostrar barras de nivel de sonido */
+  /* Para activarlas, añade en tu HTML este bloque justo debajo del botón:
+     <div class="sound-bars">
+        <div></div><div></div><div></div><div></div><div></div>
+     </div>
+  */
+  .sound-bars {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 20px;
+  }
+  .sound-bars div {
+    width: 5px;
+    height: 20px;
+    background-color: #92471f;
+    animation: pulse 1s infinite;
+    animation-delay: calc(0.1s * var(--i));
+  }
+  @keyframes pulse {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+  }
