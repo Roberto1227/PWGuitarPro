@@ -1,0 +1,295 @@
+body.dark-bg {
+  background: #181c20;
+  color: #fff;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER */
+.header {
+  width: 100%;
+  background: #23272e;
+  box-shadow: 0 2px 8px #0006;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.menu.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 80px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: #ffe6b0;
+  text-decoration: none;
+  font-weight: bold;
+  gap: 10px;
+}
+.menu-icono {
+  display: none;
+}
+.navbar ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar ul li a {
+  color: #ffe6b0;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.navbar ul li a:hover,
+.navbar ul li.login a {
+  color: #ffb300;
+}
+
+/* Afinador tipo GuitarTuna */
+.tuner-gt-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: rgba(30,34,40,0.98);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px #0008;
+  padding: 32px 16px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gt-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  color: #ffe6b0;
+  text-align: center;
+}
+
+.gt-tuner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0 18px;
+  margin-bottom: 24px;
+}
+
+.gt-strings {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.gt-string-circle {
+  width: 48px;
+  height: 48px;
+  background: #23272e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffe6b0;
+  box-shadow: 0 2px 8px #0006;
+  border: 2.5px solid #444;
+  transition: all 0.2s cubic-bezier(.4,2,.6,1);
+  user-select: none;
+  position: relative;
+}
+
+/* NUEVOS ESTADOS DE COLOR PARA CUERDA */
+.gt-string-circle.active-red {
+  background: #ff3b3b;
+  color: #fff;
+  border-color: #ff3b3b;
+  box-shadow: 0 0 16px 4px #ff3b3b88, 0 2px 8px #0006;
+  animation: gt-pop 0.25s;
+}
+.gt-string-circle.active-green {
+  background: #4CAF50;
+  color: #fff;
+  border-color: #4CAF50;
+  box-shadow: 0 0 16px 4px #4CAF5088, 0 2px 8px #0006;
+  animation: gt-pop 0.25s;
+}
+
+@keyframes gt-pop {
+  0% { transform: scale(1); }
+  60% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+.gt-headstock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  min-height: 320px;
+}
+
+.gt-display {
+  margin: 24px 0 12px 0;
+  text-align: center;
+}
+
+.gt-note {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffe6b0;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 8px #000a;
+}
+
+.gt-freq {
+  font-size: 1.5rem;
+  color: #ffb300;
+  margin-bottom: 2px;
+}
+
+.gt-status {
+  font-size: 1.1rem;
+  color: #fff;
+  min-height: 24px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.gt-btn {
+  background: linear-gradient(90deg, #ffb300 0%, #ffe6b0 100%);
+  color: #23272e;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  margin-top: 12px;
+  box-shadow: 0 2px 8px #0006;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.gt-btn:hover {
+  background: linear-gradient(90deg, #ffe6b0 0%, #ffb300 100%);
+  color: #181c20;
+}
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  background: #23272e;
+  color: #ffe6b0;
+  padding: 32px 0 16px 0;
+  margin-top: 40px;
+}
+.social-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.mascota-icono {
+  width: 90px;
+  height: auto;
+  border-radius: 50%;
+  background: #181c20;
+  box-shadow: 0 2px 8px #0006;
+}
+.link {
+  flex: 1;
+  min-width: 220px;
+}
+.link h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #ffb300;
+}
+.link ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+.link ul li {
+  margin-bottom: 8px;
+}
+.link ul li a {
+  color: #ffe6b0;
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: color 0.2s;
+}
+.link ul li a:hover {
+  color: #ffb300;
+}
+.social-icon {
+  margin-right: 8px;
+  color: #ffb300;
+}
+.link p {
+  color: #ffe6b0;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .menu.container {
+      flex-direction: column;
+      height: auto;
+      gap: 10px;
+      padding: 10px 8px;
+  }
+  .navbar ul {
+      gap: 14px;
+  }
+  .social-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+  }
+}
+@media (max-width: 600px) {
+  .tuner-gt-container {
+      max-width: 98vw;
+      padding: 10px 2vw 20px 2vw;
+  }
+  .gt-tuner {
+      flex-direction: column;
+      gap: 0;
+  }
+  .gt-headstock {
+      min-width: 120px;
+      min-height: 220px;
+  }
+  .gt-string-circle {
+      width: 38px;
+      height: 38px;
+      font-size: 1.1rem;
+  }
+  .gt-note {
+      font-size: 2.2rem;
+  }
+  .footer {
+      padding: 18px 0 8px 0;
+  }
+}
