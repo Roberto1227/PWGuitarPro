@@ -74,6 +74,17 @@
                 score++;
             }
         });
+
+
+        if (userAnswers.includes(null)) {
+    alert("Por favor responde todas las preguntas antes de finalizar.");
+    return;
+                }
+
+
+        document.querySelectorAll(".answer").forEach(el => {
+          el.style.pointerEvents = "none"; 
+         });
     
         let percentage = (score / questions.length) * 100;
         let aprobado = percentage >= 60;
