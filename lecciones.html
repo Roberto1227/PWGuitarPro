@@ -7,7 +7,8 @@
     <title>Lecciones - GuitarPro</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="lecciones.css">
-    <link rel="stylesheet" href="modal.css"> 
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
@@ -38,31 +39,42 @@
     <section class="lecciones">
         <h2>Lecciones de Guitarra</h2>
         <div class="tarjetas-container">
-            <!-- Tarjeta con la ventana modal -->
-            <div class="tarjeta">
+            <!-- Tarjeta Partes de la Guitarra (siempre desbloqueada) -->
+            <div class="tarjeta unlocked" id="nivel-partes">
                 <img src="imagenes/tar1.png" alt="Partes de la Guitarra">
                 <h3>Partes de la Guitarra</h3>
                 <p>Conoce cada parte de la guitarra y cómo influye en su sonido.</p>
                 <a href="partes.html" class="btn-2">Ver más</a>
             </div>
-        
-            <div class="tarjeta">
+            <!-- Tarjeta Básico (bloqueada por defecto) -->
+            <div class="tarjeta locked" id="nivel-basico">
+                <div class="lock-overlay">
+                    <i class="fas fa-lock"></i>
+                </div>
                 <img src="imagenes/tar2.png" alt="Lecciones Básicas">
-                <h3>Nivel Básicas</h3>
+                <h3>Acordes Básicos</h3>
                 <p>Empieza desde lo más sencillo y aprende a tocar tus primeras notas.</p>
-                <a href="basico.html" class="btn-2">Ver más</a>
+                <a href="basico.html" class="btn-2 disabled">Ver más</a>
             </div>
-            <div class="tarjeta">
+            <!-- Tarjeta Intermedio (bloqueada por defecto) -->
+            <div class="tarjeta locked" id="nivel-medio">
+                <div class="lock-overlay">
+                    <i class="fas fa-lock"></i>
+                </div>
                 <img src="imagenes/tar3.png" alt="Nivel Medio">
-                <h3>Nivel Medio</h3>
+                <h3>Acordes Intermedios</h3>
                 <p>Perfecciona tus técnicas y domina acordes más complejos.</p>
-                <a href="medio.html" class="btn-2">Ver más</a>
+                <a href="medio.html" class="btn-2 disabled">Ver más</a>
             </div>
-            <div class="tarjeta">
-                <img src="imagenes/tar4.png" alt="Nivel Medio">
-                <h3>Nivel Avanzado</h3>
+            <!-- Tarjeta Avanzado (bloqueada por defecto) -->
+            <div class="tarjeta locked" id="nivel-avanzado">
+                <div class="lock-overlay">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <img src="imagenes/tar4.png" alt="Nivel Avanzado">
+                <h3>Acordes Avanzados</h3>
                 <p>Domina el arte de la guitarra con lecciones avanzadas.</p>
-                <a href="avanzado.html" class="btn-2">Ver más</a>
+                <a href="avanzado.html" class="btn-2 disabled">Ver más</a>
             </div>
         </div>
     </section>
@@ -95,6 +107,14 @@
         </div>
     </div>
 
-    <script src="basico.js" defer></script>
+    <div id="toast-intermedio" style="display:none; position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#4CAF50; color:white; padding:16px 32px; border-radius:8px; font-size:18px; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:9999;">
+        ¡Felicitaciones! Acordes básicos desbloqueados. Ahora puedes acceder a los acordes intermedios.
+    </div>
+
+    <div id="toast-avanzado" style="display:none; position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#92471f; color:white; padding:16px 32px; border-radius:8px; font-size:18px; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:9999;">
+        ¡Felicitaciones! Acordes intermedios desbloqueados. Ahora puedes acceder a los acordes avanzados.
+    </div>
+
+    <script src="lecciones.js"></script>
 </body>
 </html>
