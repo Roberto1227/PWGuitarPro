@@ -1,12 +1,12 @@
 // Acordes básicos para el juego
 const acordes = [
-    { nombre: 'Do', imagen: 'Acordes/Basico/Do.png' },
-    { nombre: 'Re', imagen: 'Acordes/Basico/Re.png' },
-    { nombre: 'Mi', imagen: 'Acordes/Basico/Mi.png' },
-    { nombre: 'Fa', imagen: 'Acordes/Basico/Fa.png' },
-    { nombre: 'Sol', imagen: 'Acordes/Basico/Sol.png' },
-    { nombre: 'La', imagen: 'Acordes/Basico/La.png' },
-    { nombre: 'Si', imagen: 'Acordes/Basico/Si.png' }
+    { nombre: 'Do', imagen: 'Acordes/Basico/Mayores/DoMayor.png' },
+    { nombre: 'Re', imagen: 'Acordes/Basico/Mayores/ReMayor.png' },
+    { nombre: 'Mi', imagen: 'Acordes/Basico/Mayores/MiMayor.png' },
+    { nombre: 'Fa', imagen: 'Acordes/Basico/Mayores/FaMayor.png' },
+    { nombre: 'Sol', imagen: 'Acordes/Basico/Mayores/SolMayor.png' },
+    { nombre: 'La', imagen: 'Acordes/Basico/Mayores/LaMayor.png' },
+    { nombre: 'Si', imagen: 'Acordes/Basico/Mayores/SiMayor.png' }
 ];
 
 let cartas = [];

@@ -32,13 +32,13 @@
   }
   
   .imagenes {
-    display: flex; /* Coloca las imágenes en una fila horizontal */
-    justify-content: center; /* Centra las imágenes dentro del contenedor */
-    gap: 20px; /* Espacio entre las imágenes */
+    display: flex; 
+    justify-content: center;
+    gap: 20px; 
   }
   
   .imagenes img {
-    width: 50%; /* Cada imagen ocupa un 45% del ancho del contenedor */
+    width: 50%; 
     max-width: 450px; /* Límite máximo de tamaño */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Efecto de sombra */
