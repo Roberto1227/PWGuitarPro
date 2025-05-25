@@ -1,5 +1,14 @@
 
 const acordes = [
+<<<<<<< HEAD
+    { nombre: 'Do', imagen: 'Acordes/Basico/Mayores/DoMayor.png' },
+    { nombre: 'Re', imagen: 'Acordes/Basico/Mayores/ReMayor.png' },
+    { nombre: 'Mi', imagen: 'Acordes/Basico/Mayores/MiMayor.png' },
+    { nombre: 'Fa', imagen: 'Acordes/Basico/Mayores/FaMayor.png' },
+    { nombre: 'Sol', imagen: 'Acordes/Basico/Mayores/SolMayor.png' },
+    { nombre: 'La', imagen: 'Acordes/Basico/Mayores/LaMayor.png' },
+    { nombre: 'Si', imagen: 'Acordes/Basico/Mayores/SiMayor.png' }
+=======
     { nombre: 'DoMayor', imagen: 'Acordes/Basico/Mayores/DoMayor.png' },
     { nombre: 'ReMayor', imagen: 'Acordes/Basico/Mayores/ReMayor.png' },
     { nombre: 'MiMayor', imagen: 'Acordes/Basico/Mayores/MiMayor.png' },
@@ -7,6 +16,7 @@ const acordes = [
     { nombre: 'SolMayor', imagen: 'Acordes/Basico/Mayores/SolMayor.png' },
     { nombre: 'LaMAyor', imagen: 'Acordes/Basico/Mayores/LaMayor.png' },
     { nombre: 'SiMayor', imagen: 'Acordes/Basico/Mayores/SiMayor.png' }
+>>>>>>> b703ca282c90c1b600dedcaf12fcfec9ed065e69
 ];
 
 let cartas = [];

@@ -417,6 +417,9 @@ const acordes7Mayores = [
   
     document.getElementById("lessonName").textContent = lessonNameText;
     document.getElementById("lessonBrief").textContent = lessonBriefText;
+<<<<<<< HEAD
+  }
+=======
   }
 
   // Función para finalizar la lección
@@ -459,3 +462,4 @@ const acordes7Mayores = [
     nextChord.addEventListener("click", nextChordHandler);
     finishLesson.addEventListener("click", finishLessonHandler);
   });
+>>>>>>> b703ca282c90c1b600dedcaf12fcfec9ed065e69

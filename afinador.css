@@ -1,65 +1,34 @@
-body.dark-bg {
-  background: #181c20;
-  color: #fff;
-  min-height: 100vh;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Helvetica, Arial, sans-serif;
+         background-image: linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+    ), url(Imagenes/afina.jpg);
+    background-size: cover;
 }
 
-/* HEADER */
-.header {
-  width: 100%;
-  background: #23272e;
-  box-shadow: 0 2px 8px #0006;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.menu.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 80px;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 2rem;
-  color: #ffe6b0;
-  text-decoration: none;
-  font-weight: bold;
-  gap: 10px;
-}
-.menu-icono {
-  display: none;
-}
-.navbar ul {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.navbar ul li a {
-  color: #ffe6b0;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-.navbar ul li a:hover,
-.navbar ul li.login a {
-  color: #ffb300;
+.head{
+      background-image: linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+    ), url(imagenes/bg.jpg);
+      min-height: 16vh; 
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.8); 
 }
 
 /* Afinador tipo GuitarTuna */
 .tuner-gt-container {
   max-width: 500px;
-  margin: 40px auto;
+  margin: 100px auto;
   background: rgba(30,34,40,0.98);
   border-radius: 24px;
   box-shadow: 0 8px 32px #0008;
@@ -71,9 +40,9 @@ body.dark-bg {
 
 .gt-title {
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 1px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   color: #ffe6b0;
   text-align: center;
 }
@@ -84,13 +53,13 @@ body.dark-bg {
   align-items: center;
   justify-content: center;
   gap: 0 18px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .gt-strings {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 30px;
 }
 
 .gt-string-circle {
@@ -189,107 +158,4 @@ body.dark-bg {
 .gt-btn:hover {
   background: linear-gradient(90deg, #ffe6b0 0%, #ffb300 100%);
   color: #181c20;
-}
-
-/* FOOTER */
-.footer {
-  width: 100%;
-  background: #23272e;
-  color: #ffe6b0;
-  padding: 32px 0 16px 0;
-  margin-top: 40px;
-}
-.social-container {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  align-items: flex-start;
-  gap: 32px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.mascota-icono {
-  width: 90px;
-  height: auto;
-  border-radius: 50%;
-  background: #181c20;
-  box-shadow: 0 2px 8px #0006;
-}
-.link {
-  flex: 1;
-  min-width: 220px;
-}
-.link h2 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-  color: #ffb300;
-}
-.link ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 10px 0;
-}
-.link ul li {
-  margin-bottom: 8px;
-}
-.link ul li a {
-  color: #ffe6b0;
-  text-decoration: none;
-  font-size: 1.05rem;
-  transition: color 0.2s;
-}
-.link ul li a:hover {
-  color: #ffb300;
-}
-.social-icon {
-  margin-right: 8px;
-  color: #ffb300;
-}
-.link p {
-  color: #ffe6b0;
-  font-size: 1rem;
-  margin-top: 10px;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .menu.container {
-      flex-direction: column;
-      height: auto;
-      gap: 10px;
-      padding: 10px 8px;
-  }
-  .navbar ul {
-      gap: 14px;
-  }
-  .social-container {
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-  }
-}
-@media (max-width: 600px) {
-  .tuner-gt-container {
-      max-width: 98vw;
-      padding: 10px 2vw 20px 2vw;
-  }
-  .gt-tuner {
-      flex-direction: column;
-      gap: 0;
-  }
-  .gt-headstock {
-      min-width: 120px;
-      min-height: 220px;
-  }
-  .gt-string-circle {
-      width: 38px;
-      height: 38px;
-      font-size: 1.1rem;
-  }
-  .gt-note {
-      font-size: 2.2rem;
-  }
-  .footer {
-      padding: 18px 0 8px 0;
-  }
 }
