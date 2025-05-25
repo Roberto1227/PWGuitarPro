@@ -57,9 +57,13 @@ function updateCardStates() {
     
     // Intermedio desbloqueado si básico completado
     if (progress.nivelBasico) {
-        document.getElementById('nivel-medio').classList.remove('locked');
-        document.getElementById('nivel-medio').classList.add('unlocked');
-        document.querySelector('#nivel-medio .btn-2').classList.remove('disabled');
+        const nivelMedio = document.getElementById('nivel-medio');
+        nivelMedio.classList.remove('locked');
+        nivelMedio.classList.add('unlocked');
+        const btnMedio = nivelMedio.querySelector('.btn-2');
+        if (btnMedio) {
+            btnMedio.classList.remove('disabled');
+        }
     }
     
     // Avanzado desbloqueado si intermedio completado
@@ -81,8 +85,13 @@ function marcarLeccionCompletada(nivel) {
             break;
         case 'nivelBasico':
             progress.nivelBasico = true;
-            alert('¡Felicidades! Has completado las lecciones básicas. Ahora puedes acceder a las lecciones intermedias.');
-            break;
+            // Mostrar mensaje de felicitación
+            alert('¡Felicidades! Has completado las lecciones básicas. Ahora puedes acceder a los Acordes Intermedios. ¡Sigue así!');
+            // Guardar el progreso
+            localStorage.setItem('guitarProProgress', JSON.stringify(progress));
+            // Redirigir a la página de lecciones
+            window.location.href = 'lecciones.html';
+            return; // Salir de la función aquí para evitar la redirección duplicada
         case 'nivelMedio':
             progress.nivelMedio = true;
             alert('¡Felicidades! Has completado las lecciones intermedias. Ahora puedes acceder a las lecciones avanzadas.');
@@ -134,4 +143,17 @@ window.marcarLeccionCompletada = function(nivel) {
         sessionStorage.setItem('showAvanzadoToast', '1');
     }
     originalMarcarLeccionCompletada(nivel);
-}; 
+};
+
+// Botón para reiniciar el progreso
+document.addEventListener('DOMContentLoaded', () => {
+    const resetBtn = document.getElementById('resetProgressBtn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            if (confirm('¿Seguro que quieres reiniciar tu progreso?')) {
+                localStorage.removeItem('guitarProProgress');
+                location.reload();
+            }
+        });
+    }
+}); 

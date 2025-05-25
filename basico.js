@@ -353,13 +353,21 @@ function updateAdvice() {
     const currentLesson = document.getElementById("lessonName").textContent;
     if (currentLesson === "Lección: Acordes de Séptima Parte 2") {
         // Marcar la lección básica como completada
-        marcarLeccionCompletada('nivelBasico');
+        const progress = JSON.parse(localStorage.getItem('guitarProProgress'));
+        progress.nivelBasico = true;
+        localStorage.setItem('guitarProProgress', JSON.stringify(progress));
+        
         // Mostrar mensaje de felicitación
         alert("¡Felicitaciones! Has completado todas las lecciones básicas. Ahora puedes acceder a las lecciones intermedias.");
+        
+        // Activar el toast para el nivel intermedio
+        sessionStorage.setItem('showIntermedioToast', '1');
+        
         // Redirigir a la página de lecciones
         window.location.href = 'lecciones.html';
+    } else {
+        closeModal();
     }
-    closeModal();
   }
   
   // Función para cerrar el modal
