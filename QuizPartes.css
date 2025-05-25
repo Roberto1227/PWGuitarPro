@@ -1,0 +1,92 @@
+body { font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.quiz-container {
+    width: 60%;
+    max-height: 80vh;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(none);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+    margin-top: 50px;
+}
+.quiz-container:hover {
+    transform: scale(1.05);
+}
+.question {
+    font-size: 22px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+.answers {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+.answer {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+.answer img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.answer:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+.selected {
+    border-color: #ffeb3b;
+    background-color: rgba(255, 235, 59, 0.4);
+    transform: scale(1.15);
+}
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #ffeb3b;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+button:hover {
+    background: #fdd835;
+    transform: scale(1.1);
+}
+#result {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    animation: fadeIn 1s ease-in-out;
+}

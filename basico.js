@@ -2,6 +2,10 @@
 let chords = []; // Será asignada dinámicamente según la lección seleccionada
 let currentChordIndex = 0; // Índice del acorde actual
 
+// Variables para controlar las diapositivas
+let currentSlide = 1;
+const totalSlides = 4; // Incluyendo la introducción y la final
+
 // Selección de elementos principales
 const lessonModal = document.getElementById("lessonModal");
 const modalClose = document.getElementById("modalClose");
@@ -341,10 +345,29 @@ function updateAdvice() {
   // Función para finalizar la lección
   function finishLessonHandler() {
     if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
     }
-    closeModal();
+
+    // Verificar si estamos en la última lección (Acordes 7 Parte 2)
+    const currentLesson = document.getElementById("lessonName").textContent;
+    if (currentLesson === "Lección: Acordes de Séptima Parte 2") {
+        // Marcar la lección básica como completada
+        const progress = JSON.parse(localStorage.getItem('guitarProProgress'));
+        progress.nivelBasico = true;
+        localStorage.setItem('guitarProProgress', JSON.stringify(progress));
+        
+        // Mostrar mensaje de felicitación
+        alert("¡Felicitaciones! Has completado todas las lecciones básicas. Ahora puedes acceder a las lecciones intermedias.");
+        
+        // Activar el toast para el nivel intermedio
+        sessionStorage.setItem('showIntermedioToast', '1');
+        
+        // Redirigir a la página de lecciones
+        window.location.href = 'lecciones.html';
+    } else {
+        closeModal();
+    }
   }
   
   // Función para cerrar el modal
@@ -368,3 +391,82 @@ function updateAdvice() {
     nextChord.addEventListener("click", nextChordHandler);
     finishLesson.addEventListener("click", finishLessonHandler);
   });
+
+// Función para mostrar la siguiente diapositiva
+function mostrarSiguiente() {
+    if (currentSlide < totalSlides) {
+        document.querySelector(`#diapositiva-${currentSlide}`).style.display = 'none';
+        currentSlide++;
+        if (currentSlide === totalSlides) {
+            document.getElementById('diapositiva-final').style.display = 'block';
+            // Lanzar confeti cuando se llega a la última diapositiva
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        } else {
+            document.querySelector(`#diapositiva-${currentSlide}`).style.display = 'block';
+        }
+        actualizarBarraProgreso();
+    }
+}
+
+// Función para mostrar la diapositiva anterior
+function mostrarAnterior() {
+    if (currentSlide > 1) {
+        if (currentSlide === totalSlides) {
+            document.getElementById('diapositiva-final').style.display = 'none';
+        } else {
+            document.querySelector(`#diapositiva-${currentSlide}`).style.display = 'none';
+        }
+        currentSlide--;
+        document.querySelector(`#diapositiva-${currentSlide}`).style.display = 'block';
+        actualizarBarraProgreso();
+    }
+}
+
+// Función para actualizar la barra de progreso
+function actualizarBarraProgreso() {
+    const progress = (currentSlide / totalSlides) * 100;
+    document.querySelector('.indicador').style.width = `${progress}%`;
+}
+
+// Funciones para los modales
+function abrirModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+}
+
+function cerrarModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+// Cerrar modal al hacer clic fuera del contenido
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+    }
+}
+
+// Inicializar la página
+document.addEventListener('DOMContentLoaded', () => {
+    // Ocultar todas las diapositivas excepto la primera
+    for (let i = 2; i <= totalSlides; i++) {
+        if (i === totalSlides) {
+            document.getElementById('diapositiva-final').style.display = 'none';
+        } else {
+            document.querySelector(`#diapositiva-${i}`).style.display = 'none';
+        }
+    }
+    
+    // Inicializar la barra de progreso
+    actualizarBarraProgreso();
+
+    // Agregar eventos a los botones de los modales
+    document.querySelectorAll('.acorde, .tecnica').forEach(element => {
+        element.addEventListener('click', function() {
+            const modalId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+            abrirModal(modalId);
+        });
+    });
+});

@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     color: #333;
 }
 
-/* Header */
+
 header {
     background-color: #CE967B;
     color: white;
@@ -55,7 +55,7 @@ nav {
     color: #92471f;
 }
 
-/* Main Content */
+
 main {
     margin-top: 80px;
     padding: 2rem;
@@ -146,7 +146,7 @@ main {
     background-color: #92471f;
 }
 
-/* Footer */
+
 footer {
     background-color: #CE967B;
     color: white;
@@ -190,7 +190,7 @@ footer {
     border-top: 1px solid #CE967B;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .memory-game {
         grid-template-columns: repeat(2, 1fr);

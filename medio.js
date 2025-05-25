@@ -1,4 +1,3 @@
-
 const acordes7Mayores = [
     {
       name: "Do7 Mayor",
@@ -418,4 +417,49 @@ const acordes7Mayores = [
   
     document.getElementById("lessonName").textContent = lessonNameText;
     document.getElementById("lessonBrief").textContent = lessonBriefText;
+<<<<<<< HEAD
   }
+=======
+  }
+
+  // Función para finalizar la lección
+  function finishLessonHandler() {
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
+
+    // Verificar si estamos en la última lección (Acordes Aumentados)
+    const currentLesson = document.getElementById("lessonName").textContent;
+    if (currentLesson === "Lección: acordesAumentados") {
+        // Marcar la lección intermedia como completada
+        const progress = JSON.parse(localStorage.getItem('guitarProProgress'));
+        progress.nivelMedio = true;
+        localStorage.setItem('guitarProProgress', JSON.stringify(progress));
+        
+        // Mostrar mensaje de felicitación
+        alert("¡Felicitaciones! Has completado todas las lecciones intermedias. Ahora puedes acceder a las lecciones avanzadas.");
+        
+        // Activar el toast para el nivel avanzado
+        sessionStorage.setItem('showAvanzadoToast', '1');
+        
+        // Redirigir a la página de lecciones
+        window.location.href = 'lecciones.html';
+    } else {
+        closeModal();
+    }
+  }
+
+  // Asignar eventos al DOM
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".btn-2").forEach((button) => {
+        button.addEventListener("click", showModal);
+    });
+
+    modalClose.addEventListener("click", closeModal);
+    startLesson.addEventListener("click", startLessonHandler);
+    prevChord.addEventListener("click", prevChordHandler);
+    nextChord.addEventListener("click", nextChordHandler);
+    finishLesson.addEventListener("click", finishLessonHandler);
+  });
+>>>>>>> b703ca282c90c1b600dedcaf12fcfec9ed065e69
