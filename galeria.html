@@ -1,58 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8"
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <title>Galería - GuitarPro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lecciones.css">
     <link rel="stylesheet" href="galeria.css">
-</head> 
-<header>
-   Galerias  GuitarPro
-</header>
-<body>
-    
-    <h1 class="main-title">TIPOS DE ACORDE</h1>
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            
-            <div class="swiper-slide">            
-
-                <img src="imagenes/tar2.png" alt="Nivel Fácil">
-                <div class="product-content">
-                    <h3>BASICO</h3>
-                    <p>Aprende en nuestra galería de acordes</p>
-                    <a href="Gbasicos.html" class="btn-1">Acceder</a>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <img src="imagenes/tar3.png" alt="Nivel Intermedio">
-                <div class="product-content">
-                    <h3>INTERMEDIOS</h3>
-                    <p>Aprende en nuestra galería de acordes</p>
-                    <a href="Gintermedio.html" class="btn-1">Acceder</a>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <img src="imagenes/tar4.png" alt="Nivel Intermedio">
-                <div class="product-content">
-                    <h3>AVANZADOS</h3>
-                    <p>Aprende en nuestra galería de acordes</p>
-                    <a href="gavanzado.html" class="btn-1">Acceder</a>
-                </div>
-            </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+</head>
+<body class="dark-bg">
+    <!-- Encabezado -->
+    <header class="header">
+        <div class="menu container">
+            <a href="index.html" class="logo">
+                <img src="imagenes/logo.png" alt="GuitarPro" style="height: 70px; vertical-align: middle;">
+                GuitarPro
+            </a>
+            <label for="menu">
+                <img src="imagenes/menu.png" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="lecciones.html">Lecciones</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="afinador.html">Afinador</a></li>
+                    <li class="login"><a href="registro_login.html">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
+    </header>
 
-    
-  
-   
+    <section class="galeria">
+        <h2>Galería de Acordes</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide">            
+                    <img src="imagenes/tar2.png" alt="Nivel Fácil">
+                    <div class="product-content">
+                        <h3>BASICO</h3>
+                        <p>Aprende en nuestra galería de acordes</p>
+                        <a href="Gbasicos.html" class="btn-1">Acceder</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="imagenes/tar3.png" alt="Nivel Intermedio">
+                    <div class="product-content">
+                        <h3>INTERMEDIOS</h3>
+                        <p>Aprende en nuestra galería de acordes</p>
+                        <a href="Gintermedio.html" class="btn-1">Acceder</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="imagenes/tar4.png" alt="Nivel Intermedio">
+                    <div class="product-content">
+                        <h3>AVANZADOS</h3>
+                        <p>Aprende en nuestra galería de acordes</p>
+                        <a href="gavanzado.html" class="btn-1">Acceder</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="social-container">
-            <img src="Imagenes/Mascota v2.png" alt="Mascota" class="mascota-icono">
+            <img src="imagenes/Mascota (1).png" alt="Mascota" class="mascota-icono">
             <div class="link">
                 <h2>Síguenos en redes sociales</h2>
                 <ul>
@@ -76,9 +94,6 @@
             </div>
         </div>
     </footer>
-</body>
-</html>
-
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
@@ -102,7 +117,6 @@
         prevEl: ".swiper-button-prev",
     },
 });
-
     </script>
 </body>
 </html>
