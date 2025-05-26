@@ -492,6 +492,7 @@ async function generateDiplomaPDF(studentName) {
                 <h3 style="color: #92471f; font-size: 28px; margin: 20px 0;">Acordes Avanzados de Guitarra</h3>
                 <p style="font-size: 18px; margin: 20px 0;">Con dedicación y excelencia</p>
                 <p style="font-size: 16px; margin-top: 40px;">Fecha: ${new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                <p style="font-size: 12px; color: #666; margin-top: 20px;">Maestros: Edwin Campos, Roberto Campos, Yader Romero, Diego Avilés</p>
             </div>
         `;
 
