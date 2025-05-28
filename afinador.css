@@ -25,6 +25,19 @@ html, body {
     background-color: rgba(0, 0, 0, 0.8); 
 }
 
+.aheader{
+     min-height: 16vh; 
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.8);   
+
+
+}
+
 /* Afinador tipo GuitarTuna */
 .tuner-gt-container {
   max-width: 500px;
