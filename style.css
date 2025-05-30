@@ -294,6 +294,16 @@ p {
     max-width: 150px;
     height: auto;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.mascota-link {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.mascota-link:hover .mascota-icono {
+    transform: scale(1.1);
 }
 
 .link {
