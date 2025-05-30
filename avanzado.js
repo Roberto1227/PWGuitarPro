@@ -368,6 +368,63 @@ const chordSlide = document.getElementById('chordSlide');
 const finalSlide = document.getElementById('finalSlide');
 const modalClose = document.getElementById('modalClose');
 
+// Array de preguntas sobre las partes de la guitarra
+const guitarPartsQuiz = [
+    {
+        type: "multiple",
+        question: "¿Cuál es la parte de la guitarra que se usa para afinar las cuerdas?",
+        options: ["Cejilla", "Clavijas", "Puente", "Diapasón"],
+        correctAnswer: 1
+    },
+    {
+        type: "truefalse",
+        question: "El diapasón es la parte donde se colocan los dedos para tocar las notas.",
+        options: ["Verdadero", "Falso"],
+        correctAnswer: 0
+    },
+    {
+        type: "multiple",
+        question: "¿Qué parte sostiene las cuerdas en la parte inferior de la guitarra?",
+        options: ["Cejilla", "Clavijas", "Puente", "Diapasón"],
+        correctAnswer: 2
+    },
+    {
+        type: "truefalse",
+        question: "Las clavijas se encuentran en la parte superior del mástil de la guitarra.",
+        options: ["Verdadero", "Falso"],
+        correctAnswer: 0
+    },
+    {
+        type: "multiple",
+        question: "¿Cuál es la parte que protege la boca de la guitarra?",
+        options: ["Golpeador", "Puente", "Cejilla", "Diapasón"],
+        correctAnswer: 0
+    },
+    {
+        type: "truefalse",
+        question: "El puente es la parte donde se conectan las cuerdas a la caja de la guitarra.",
+        options: ["Verdadero", "Falso"],
+        correctAnswer: 0
+    },
+    {
+        type: "multiple",
+        question: "¿Qué parte de la guitarra separa los trastes?",
+        options: ["Cejilla", "Trastes", "Diapasón", "Puente"],
+        correctAnswer: 1
+    },
+    {
+        type: "truefalse",
+        question: "La cejilla es una pieza que se coloca en el mástil para cambiar la afinación.",
+        options: ["Verdadero", "Falso"],
+        correctAnswer: 0
+    }
+];
+
+// Variables para el quiz
+let currentQuestionIndex = 0;
+let score = 0;
+let totalQuestions = guitarPartsQuiz.length;
+
 // Función para actualizar la visualización del acorde actual
 function updateChordDisplay() {
     const currentChord = chords[currentChordIndex];
@@ -455,12 +512,7 @@ function showNextChord() {
         currentChordIndex++;
         updateChordDisplay();
     } else {
-        // Si es el último acorde y estamos en la lección de 7b5, mostrar el botón de finalizar
-        if (chords === acordes7b5) {
-            showFinalSlide();
-        } else {
-            showFinalSlide();
-        }
+        showFinalSlide();
     }
 }
 
@@ -532,6 +584,146 @@ async function generateDiplomaPDF(studentName) {
     }
 }
 
+// Función para mostrar el quiz
+function showQuiz() {
+    const quizContent = `
+        <div class="quiz-container">
+            <h2>Quiz: Partes de la Guitarra</h2>
+            <div class="question-container">
+                <p class="question-type">${guitarPartsQuiz[currentQuestionIndex].type === 'truefalse' ? 'Verdadero/Falso' : 'Opción Múltiple'}</p>
+                <p class="question">${guitarPartsQuiz[currentQuestionIndex].question}</p>
+                <div class="options-container ${guitarPartsQuiz[currentQuestionIndex].type === 'truefalse' ? 'truefalse' : ''}">
+                    ${guitarPartsQuiz[currentQuestionIndex].options.map((option, index) => `
+                        <button class="option-btn" data-index="${index}">${option}</button>
+                    `).join('')}
+                </div>
+            </div>
+            <div class="quiz-progress">
+                Pregunta ${currentQuestionIndex + 1} de ${totalQuestions}
+            </div>
+        </div>
+    `;
+
+    // Mostrar el quiz en el modal
+    introSlide.style.display = "none";
+    chordSlide.style.display = "none";
+    finalSlide.style.display = "none";
+    
+    const quizSlide = document.createElement('div');
+    quizSlide.className = 'slide';
+    quizSlide.id = 'quizSlide';
+    quizSlide.innerHTML = quizContent;
+    
+    lessonModal.querySelector('.modal-window').appendChild(quizSlide);
+    quizSlide.style.display = "block";
+
+    // Agregar event listeners a los botones de opciones
+    const optionButtons = quizSlide.querySelectorAll('.option-btn');
+    optionButtons.forEach(button => {
+        button.addEventListener('click', handleAnswer);
+    });
+}
+
+// Función para manejar las respuestas
+function handleAnswer(event) {
+    const selectedAnswer = parseInt(event.target.getAttribute('data-index'));
+    const correctAnswer = guitarPartsQuiz[currentQuestionIndex].correctAnswer;
+
+    if (selectedAnswer === correctAnswer) {
+        score++;
+        event.target.classList.add('correct');
+    } else {
+        event.target.classList.add('incorrect');
+        const correctButton = document.querySelector(`[data-index="${correctAnswer}"]`);
+        correctButton.classList.add('correct');
+    }
+
+    // Deshabilitar todos los botones después de responder
+    const optionButtons = document.querySelectorAll('.option-btn');
+    optionButtons.forEach(button => {
+        button.disabled = true;
+    });
+
+    // Esperar 1 segundo antes de mostrar la siguiente pregunta
+    setTimeout(() => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < guitarPartsQuiz.length) {
+            showQuiz();
+        } else {
+            showQuizResults();
+        }
+    }, 1000);
+}
+
+// Función para calcular la nota
+function calculateGrade() {
+    const percentage = (score / totalQuestions) * 100;
+    let grade;
+    
+    if (percentage >= 90) {
+        grade = "A";
+    } else if (percentage >= 80) {
+        grade = "B";
+    } else if (percentage >= 70) {
+        grade = "C";
+    } else if (percentage >= 60) {
+        grade = "D";
+    } else {
+        grade = "F";
+    }
+    
+    return {
+        grade,
+        percentage,
+        score,
+        totalQuestions
+    };
+}
+
+// Función para mostrar los resultados del quiz
+function showQuizResults() {
+    const results = calculateGrade();
+    const quizSlide = document.getElementById('quizSlide');
+    const resultsContent = `
+        <div class="quiz-results">
+            <h2>Resultados del Quiz</h2>
+            <div class="grade-display">
+                <h3>Calificación: ${results.grade}</h3>
+                <p>Puntuación: ${results.score} de ${results.totalQuestions}</p>
+                <p>Porcentaje: ${results.percentage.toFixed(1)}%</p>
+            </div>
+            ${results.grade !== "F" ? `
+                <p class="success-message">¡Felicitaciones! Has aprobado el quiz.</p>
+                <button id="continueBtn" class="btn-1">Continuar con el Curso</button>
+            ` : `
+                <p class="error-message">Necesitas estudiar más las partes de la guitarra.</p>
+                <button id="retryBtn" class="btn-1">Intentar de nuevo</button>
+            `}
+        </div>
+    `;
+
+    quizSlide.innerHTML = resultsContent;
+
+    // Agregar event listeners a los botones
+    const continueBtn = document.getElementById('continueBtn');
+    const retryBtn = document.getElementById('retryBtn');
+
+    if (continueBtn) {
+        continueBtn.addEventListener('click', () => {
+            quizSlide.remove();
+            window.location.href = 'avanzado.html';
+        });
+    }
+
+    if (retryBtn) {
+        retryBtn.addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            score = 0;
+            showQuiz();
+        });
+    }
+}
+
 // Agregar event listeners cuando el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function() {
     // Event listener para los botones de aprender
@@ -566,9 +758,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (finishButton) {
         finishButton.addEventListener('click', () => {
             if (chords === acordes7b5) {
-                const userName = localStorage.getItem('userName') || prompt('Por favor, ingresa tu nombre para el diploma:');
+                const userName = prompt('Por favor, ingresa tu nombre para el diploma:');
                 if (userName) {
-                    localStorage.setItem('userName', userName);
                     generateDiplomaPDF(userName);
                 }
             } else {

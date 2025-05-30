@@ -9,6 +9,7 @@
     background-color: rgba(0, 0, 0, 0.8); 
 }
 
+
 .lecciones {
     background-image: linear-gradient(
         rgba(0,0,0,0.6),
@@ -259,4 +260,106 @@
     object-fit: cover;
     border-radius: 5px;
     margin-bottom: 15px;
+}
+
+/* Asegurar que la tarjeta de Partes de la Guitarra siempre esté desbloqueada */
+#nivel-partes {
+    opacity: 1 !important;
+    filter: none !important;
+    pointer-events: auto !important;
+}
+
+#nivel-partes .lock-overlay {
+    display: none !important;
+}
+
+#nivel-partes .btn-2 {
+    pointer-events: auto !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+}
+
+/* Estilos para la sección de descarga de canciones */
+.canciones-descarga {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.canciones-descarga .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.canciones-descarga h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+}
+
+.canciones-descarga p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.canciones-lista {
+    list-style: none;
+    margin: 2rem 0;
+    padding: 0;
+    display: inline-block;
+    text-align: left;
+}
+
+.canciones-lista li {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.canciones-lista li:before {
+    content: "✓";
+    color: #3498db;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.btn-descarga {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.btn-descarga:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-descarga i {
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .canciones-descarga {
+        padding: 3rem 0;
+    }
+    
+    .canciones-descarga h2 {
+        font-size: 1.8rem;
+    }
+    
+    .canciones-lista li {
+        font-size: 1rem;
+    }
 }
