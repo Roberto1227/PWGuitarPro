@@ -148,7 +148,7 @@ function detectFrequency() {
 
     // Solo mostrar si la frecuencia está cerca de alguna cuerda (±15 Hz)
     let matched = false;
-    if (frequency > 40 && frequency < 400) {
+    if (frequency > 70 && frequency < 400) {
         const closestNote = findClosestNote(frequency);
         if (Math.abs(frequency - closestNote.freq) < 15) {
             updateUI(frequency, closestNote);
