@@ -198,7 +198,7 @@ html, body {
 }
 
 .link ul li a:hover {
-    color: #CE9;
+    color: #CE967B;
 }
 
 .link p {
@@ -209,7 +209,7 @@ html, body {
 
 .social-icon {
     font-size: 20px;
-    color: #ffb900;
+    color: #ec8d40;
     margin-right: 10px;
     transition: color 0.3s ease;
 }
