@@ -12,7 +12,9 @@ const nextChord = document.getElementById("nextChord");
 
 const introSlide = document.getElementById("introSlide");
 const chordSlide = document.getElementById("chordSlide");
+const quizSlide =  document.getElementById('quizSlide');
 const finalSlide = document.getElementById("finalSlide");
+
 
 const chordName = document.getElementById("chordName");
 const chordImage = document.getElementById("chordImage");
@@ -213,6 +215,7 @@ const adviceArray = [
     if (currentAudio) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
+      
     }
   
     const lessonType = event.target.getAttribute("data-modal");
@@ -239,6 +242,7 @@ const adviceArray = [
     lessonModal.classList.remove("hidden");
     introSlide.style.display = "block";
     chordSlide.style.display = "none";
+    quizSlide.style.display = "none";
     finalSlide.style.display = "none";
   
     const lessonNameText =
@@ -303,6 +307,7 @@ function updateAdvice() {
   
     introSlide.style.display = "none";
     chordSlide.style.display = "block";
+  
     updateChordSlide(); // Esto también invoca `updateAdvice`
   }
   
@@ -321,23 +326,49 @@ function updateAdvice() {
       introSlide.style.display = "block";
     }
   }
-  
+
+// Función para cargar el contenido del quiz dinámicamente
+function cargarQuizArray() {
+  fetch('QuizArray.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('No se pudo cargar el quiz');
+      }
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById('contenedor-quiz').innerHTML = html;
+    })
+    .catch(error => {
+      console.error('Error al cargar el quiz:', error);
+      document.getElementById('contenedor-quiz').innerHTML = '<p>No se pudo cargar el quiz.</p>';
+    });
+}
+
   function nextChordHandler() {
-    if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-    }
-  
-    if (currentChordIndex < chords.length - 1) {
-      currentChordIndex++;
-      updateChordSlide(); // Esto incluye la actualización del consejo
-    } else {
-      chordSlide.style.display = "none";
-      finalSlide.style.display = "block";
-    }
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
   }
 
+  if (currentChordIndex < chords.length - 1) {
+    currentChordIndex++;
+    updateChordSlide();
+  } else {
+    chordSlide.style.display = "none";
+    quizSlide.style.display = "block";  // Mostrar quizSlide aquí
+  }
+}
   
+const finishQuiz = document.getElementById("finishQuiz"); // botón dentro del quizSlide
+
+function finishQuizHandler() {
+  quizSlide.style.display = "none";
+  finalSlide.style.display = "block";
+}
+
+finishQuiz.addEventListener("click", finishQuizHandler);
+
   // Función para finalizar la lección
   function finishLessonHandler() {
     if (currentAudio) {
@@ -348,13 +379,19 @@ function updateAdvice() {
   }
   
   // Función para cerrar el modal
-  function closeModal() {
-    if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-    }
-    lessonModal.classList.add("hidden");
+ function closeModal() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
   }
+  lessonModal.classList.add("hidden");
+
+  // ⬇️ Asegúrate de esconder el botón al cerrar el modal
+  const finishQuiz = document.getElementById("finishQuiz");
+  if (finishQuiz) {
+    finishQuiz.style.display = "none";
+  }
+}
   
   // Asignar eventos al DOM
   document.addEventListener("DOMContentLoaded", () => {
@@ -368,3 +405,54 @@ function updateAdvice() {
     nextChord.addEventListener("click", nextChordHandler);
     finishLesson.addEventListener("click", finishLessonHandler);
   });
+
+// Suponiendo que usas algo como esto para cambiar de slide
+function irASlide(numero) {
+  ocultarTodasLasSlides();
+  const slide = document.getElementById(`slide${numero}`);
+  slide.style.display = "block";
+
+  if (slide.id === "quizSlide") {
+    mostrarQuizSlide(); // <- Fuerza recarga del iframe limpio
+  }
+}
+
+function mostrarQuizSlide() {
+  document.querySelectorAll(".slide").forEach(slide => slide.style.display = "none");
+  document.getElementById("quizSlide").style.display = "block";
+
+  // ⬇️ Aquí se oculta el botón al abrir
+  document.getElementById("finishQuiz").style.display = "none";
+
+  const iframe = document.getElementById("quizFrame");
+  iframe.src = "QuizArray.html?nocache=" + Date.now();
+}
+
+document.querySelectorAll('.btn-2').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const leccionStr = btn.getAttribute('data-leccion');
+    const leccion = leccionStr ? parseInt(leccionStr) : null;
+
+    if (leccion === null || isNaN(leccion)) {
+      console.warn("Botón sin data-leccion válido");
+      return;
+    }
+
+    const modal = document.getElementById('quizSlide');
+    if (modal) modal.style.display = 'block';
+
+    const iframe = document.getElementById('quizFrame');
+    if (iframe) {
+      iframe.src = `QuizArray.html?leccion=${leccion}`;
+    }
+  });
+});
+
+window.addEventListener("message", function (event) {
+  if (event.data.quizAprobado === true) {
+    const finishQuiz = document.getElementById("finishQuiz");
+    if (finishQuiz) {
+      finishQuiz.style.display = "inline-block";
+    }
+  }
+});

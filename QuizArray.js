@@ -1,37 +1,183 @@
-// --- QuizArray.js ---
+let leccion = 1;
 
+// Arreglo global de preguntas
+let question = [];
+
+// Preguntas por lección (puedes agregar más)
 const quizzesPorLeccion = {
-    1: [
-        { question: "¿Cuál es el primer acorde que aprendiste?", answers: ["Do Mayor", "La Menor", "Sol Mayor"], correct: 0 },
-        { question: "¿Qué nota es la fundamental de Re Mayor?", answers: ["Re", "Mi", "Do"], correct: 0 },
-        { question: "artate pija loco", answers: ["puta", "gay",  "pito"], correct: 0}
-    ],
-    
-     2: [
-        { question: "¿Cuál es el primer acorde que aprendiste?", answers: ["Do Mayor", "La Menor", "Sol Mayor"], correct: 0 },
-        { question: "¿Qué nota es la fundamental de Re Mayor?", answers: ["Re", "Mi", "Do"], correct: 0 },
-        { question: "artate pija loco", answers: ["puta", "gay",  "pito"], correct: 0}
-    ]
-    
-    // Agrega más sets de preguntas según sea necesario
+  1: [
+    { question: "¿Qué lecciones aprendiste?", answers: ["Do Mayor, Re mayor, La mayor, Mi mayor", "La Menor, Sol mayor", "Beta 4, Sol recio"], correct: 0 },
+    { question: "¿?", answers: ["Re", "Mi", "Do"], correct: 0 },
+    { question: "¿?", answers: ["Mi", "La", "Re"], correct: 0 },
+    { question: "¿?", answers: ["Do Mayor", "La Menor", "Sol Mayor"], correct: 0 },
+    { question: "¿?", answers: ["Re", "Mi", "Do"], correct: 0 },
+    { question: "¿?", answers: ["Mi", "La", "Re"], correct: 0 },
+    { question: "¿?", answers: ["Do Mayor", "La Menor", "Sol Mayor"], correct: 0 },
+    { question: "¿?", answers: ["Re", "Mi", "Do"], correct: 0 },
+    { question: "¿?", answers: ["Mi", "La", "Re"], correct: 0 }
+  ],
+  2: [
+    { question: "2¿Qué acordes forman una progresión I-IV-V?", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
+    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
+    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
+  ],
+  3: [
+    { question: "3¿waoaoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
+    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
+    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
+  ],
+  4: [
+    { question: "¿4waoaadwadadadadadadawdawdoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
+    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
+    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
+  ],
+  5: [
+    { question: "5¿waoaadaafereregegwdaoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
+    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
+    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
+  ],
+  6: [
+    { question: "6¿waadadai...kwdoaoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
+    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
+    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
+  ]
 };
 
-// Obtener número de lección del atributo del body
-const leccion = parseInt(document.body.dataset.leccion) || 1;
-
-// Verifica si existen preguntas para esta lección
-if (quizzesPorLeccion[leccion]) {
-    // Reemplazar el arreglo global 'questions' definido en QuizPartes.js
-    if (typeof questions !== 'undefined') {
-        questions.splice(0, questions.length, ...quizzesPorLeccion[leccion]);
-
-        if (typeof shuffleQuestions === 'function' && typeof loadQuiz === 'function') {
-            shuffleQuestions();
-            loadQuiz();
-        }
-    } else {
-        console.warn("El arreglo global 'questions' no está disponible.");
-    }
-} else {
-    console.warn(`No hay preguntas definidas para la lección ${leccion}`);
+function obtenerPreguntasPorLeccion(numLeccion) {
+  if (quizzesPorLeccion[numLeccion]) {
+    return [...quizzesPorLeccion[numLeccion]];
+  }
+  console.warn(`No hay preguntas definidas para la lección ${numLeccion}.`);
+  return [];
 }
+
+let userAnswers = [];
+let questions = [];
+
+// Mezcla las preguntas
+function shuffleQuestions() {
+  for (let i = questions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [questions[i], questions[j]] = [questions[j], questions[i]];
+  }
+}
+
+// Cargar preguntas en el DOM
+function loadQuiz() {
+  userAnswers = new Array(questions.length).fill(null);
+  const quizContainer = document.getElementById("quiz");
+  quizContainer.innerHTML = "";
+
+  questions.forEach((q, index) => {
+    const questionEl = document.createElement("div");
+    questionEl.classList.add("question");
+    questionEl.textContent = `${index + 1}. ${q.question}`;
+
+    const answersEl = document.createElement("div");
+    answersEl.classList.add("answers");
+
+    q.answers.forEach((answer, i) => {
+      const answerEl = document.createElement("div");
+      answerEl.classList.add("answer");
+      answerEl.textContent = answer;
+      answerEl.onclick = () => selectAnswer(index, i, answerEl);
+      answersEl.appendChild(answerEl);
+    });
+
+    quizContainer.appendChild(questionEl);
+    quizContainer.appendChild(answersEl);
+  });
+}
+
+// Selección de respuesta
+function selectAnswer(questionIndex, answerIndex, element) {
+  userAnswers[questionIndex] = answerIndex;
+  const siblings = element.parentElement.children;
+  for (const sibling of siblings) {
+    sibling.classList.remove("selected");
+  }
+  element.classList.add("selected");
+}
+
+// Evaluar
+function submitQuiz() {
+  if (userAnswers.includes(null)) {
+    alert("Por favor responde todas las preguntas antes de finalizar.");
+    return;
+  }
+
+  let score = 0;
+  questions.forEach((q, i) => {
+    if (userAnswers[i] === q.correct) score++;
+  });
+
+  document.querySelectorAll(".answer").forEach(el => {
+    el.style.pointerEvents = "none";
+  });
+
+  const resultEl = document.getElementById("result");
+  const percentage = (score / questions.length) * 100;
+  const aprobado = percentage >= 60;
+
+  let textoResultado = `Tu puntuación es: ${score} / ${questions.length}. `;
+  textoResultado += aprobado ? "¡Felicidades, aprobaste! 🎉" : "No aprobaste. 😢";
+  resultEl.textContent = textoResultado;
+
+  const retryBtn = document.getElementById("retry");
+  retryBtn.style.display = "inline-block";
+
+  if (score < questions.length) {
+    retryBtn.classList.remove("discreto-flotante");
+    retryBtn.classList.add("visible-normal");
+  } else {
+    retryBtn.classList.remove("visible-normal");
+    retryBtn.classList.add("discreto-flotante");
+  }
+
+  if (aprobado) {
+    window.parent.postMessage({ quizAprobado: true }, "*");
+  }
+}
+
+// Reiniciar
+function restartQuiz() {
+  userAnswers.fill(null);
+  shuffleQuestions();
+  loadQuiz();
+  document.getElementById("result").textContent = "";
+  document.getElementById("retry").style.display = "none";
+  document.querySelectorAll(".answer").forEach(el => {
+    el.style.pointerEvents = "auto";
+    el.classList.remove("selected");
+  });
+}
+
+function cargarLeccion(nuevaLeccion) {
+  leccion = nuevaLeccion;
+
+  if (quizzesPorLeccion[leccion]) {
+    questions = [...quizzesPorLeccion[leccion]];
+  } else {
+    console.warn(`No hay preguntas definidas para la lección ${leccion}.`);
+    questions = [];
+  }
+
+  restartQuiz();  // Esta función mezcla, carga y limpia todo para la nueva lección
+}
+
+// Obtiene query param leccion y carga quiz
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+window.onload = () => {
+  const leccionParam = parseInt(getQueryParam('leccion'));
+  if (!isNaN(leccionParam)) {
+    cargarLeccion(leccionParam);
+  } else {
+    cargarLeccion(1);
+  }
+};
+
+window.cargarLeccion = cargarLeccion;
