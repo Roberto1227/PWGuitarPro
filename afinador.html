@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Afinador - GuitarPro</title>
+    <link rel="stylesheet" href="lecciones.css">
     <link rel="stylesheet" href="afinador.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-bg">
     <!-- Encabezado -->
-    <header class="header">
+    <header class="aheader">
         <div class="menu container">
             <a href="index.html" class="logo">
                 <img src="imagenes/logo.png" alt="GuitarPro" style="height: 70px; vertical-align: middle;">
@@ -40,9 +41,8 @@
                 <div class="gt-string-circle" data-note="D3">D</div>
             </div>
             <div class="gt-headstock">
-                <!-- SVG realista de la pala de guitarra -->
                 <svg width="180" height="320" viewBox="0 0 180 320">
-                    <!-- Fondo madera -->
+                 
                     <defs>
                         <linearGradient id="madera" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="0%" stop-color="#a86b3c"/>
@@ -50,14 +50,14 @@
                         </linearGradient>
                     </defs>
                     <path d="M30,20 Q90,0 150,20 Q170,80 150,300 Q90,340 30,300 Q10,80 30,20 Z" fill="url(#madera)" stroke="#fff" stroke-width="6"/>
-                    <!-- Clavijas -->
+                   
                     <circle cx="35" cy="60" r="13" fill="#bbb" stroke="#888" stroke-width="3"/>
                     <circle cx="35" cy="120" r="13" fill="#bbb" stroke="#888" stroke-width="3"/>
                     <circle cx="35" cy="180" r="13" fill="#bbb" stroke="#888" stroke-width="3"/>
                     <circle cx="145" cy="60" r="13" fill="#bbb" stroke="#888" stroke-width="3"/>
                     <circle cx="145" cy="120" r="13" fill="#bbb" stroke="#888" stroke-width="3"/>
                     <circle cx="145" cy="180" r="13" fill="#bbb" stroke="#888" stroke-width="3"/>
-                    <!-- Cuerdas -->
+                  
                     <line x1="48" y1="60" x2="90" y2="320" stroke="#e2c28b" stroke-width="2"/>
                     <line x1="48" y1="120" x2="100" y2="320" stroke="#e2c28b" stroke-width="2"/>
                     <line x1="48" y1="180" x2="110" y2="320" stroke="#e2c28b" stroke-width="2"/>
@@ -83,7 +83,7 @@
         </button>
     </div>
 
-    <!-- Pie de página -->
+   
     <footer class="footer">
         <div class="social-container">
             <img src="Imagenes/Mascota v2.png" alt="Mascota" class="mascota-icono">

@@ -356,77 +356,481 @@ const acordesNovena = [
     },
   ];
 
+// Variables globales
+let currentAudio = null;
+let currentChordIndex = 0;
+let chords = [];
 
+// Obtener elementos del DOM
+const lessonModal = document.getElementById('lessonModal');
+const introSlide = document.getElementById('introSlide');
+const chordSlide = document.getElementById('chordSlide');
+const finalSlide = document.getElementById('finalSlide');
+const modalClose = document.getElementById('modalClose');
 
+// Array de preguntas sobre las partes de la guitarra
+const guitarPartsQuiz = [
+    {
+        type: "multiple",
+        question: "¿Cuál es la parte de la guitarra que se usa para afinar las cuerdas?",
+        options: ["Cejilla", "Clavijas", "Puente", "Diapasón"],
+        correctAnswer: 1
+    },
+    {
+        type: "truefalse",
+        question: "El diapasón es la parte donde se colocan los dedos para tocar las notas.",
+        options: ["Verdadero", "Falso"],
+        correctAnswer: 0
+    },
+    {
+        type: "multiple",
+        question: "¿Qué parte sostiene las cuerdas en la parte inferior de la guitarra?",
+        options: ["Cejilla", "Clavijas", "Puente", "Diapasón"],
+        correctAnswer: 2
+    },
+    {
+        type: "truefalse",
+        question: "Las clavijas se encuentran en la parte superior del mástil de la guitarra.",
+        options: ["Verdadero", "Falso"],
+        correctAnswer: 0
+    },
+    {
+        type: "multiple",
+        question: "¿Cuál es la parte que protege la boca de la guitarra?",
+        options: ["Golpeador", "Puente", "Cejilla", "Diapasón"],
+        correctAnswer: 0
+    },
+    {
+        type: "truefalse",
+        question: "El puente es la parte donde se conectan las cuerdas a la caja de la guitarra.",
+        options: ["Verdadero", "Falso"],
+        correctAnswer: 0
+    },
+    {
+        type: "multiple",
+        question: "¿Qué parte de la guitarra separa los trastes?",
+        options: ["Cejilla", "Trastes", "Diapasón", "Puente"],
+        correctAnswer: 1
+    },
+    {
+        type: "truefalse",
+        question: "La cejilla es una pieza que se coloca en el mástil para cambiar la afinación.",
+        options: ["Verdadero", "Falso"],
+        correctAnswer: 0
+    }
+];
+
+// Variables para el quiz
+let currentQuestionIndex = 0;
+let score = 0;
+let totalQuestions = guitarPartsQuiz.length;
+
+// Función para actualizar la visualización del acorde actual
+function updateChordDisplay() {
+    const currentChord = chords[currentChordIndex];
+    document.getElementById('chordName').textContent = currentChord.name;
+    document.getElementById('chordImage').src = currentChord.image;
+    document.getElementById('chordDescription').textContent = currentChord.description;
+    document.getElementById('fingerPosition').src = currentChord.fingerPosition;
+}
+
+// Función para mostrar el modal
 function showModal(event) {
     if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
     }
-  
+
     const lessonType = event.target.getAttribute("data-modal");
     console.log("Botón presionado:", lessonType);
-  
+
     // Asignar el conjunto de datos correspondiente según el tipo de lección
     if (lessonType === "novena") {
-      chords = acordesNovena;
+        chords = acordesNovena;
     } else if (lessonType === "onceava") {
-      chords = acordesOnceava;
+        chords = acordesOnceava;
     } else if (lessonType === "treceava") {
-      chords = acordesTreceava;
+        chords = acordesTreceava;
     } else if (lessonType === "7n5") {
-      chords = acordes7n5;
+        chords = acordes7n5;
     } else if (lessonType === "7n9") {
-      chords = acordes7n9;
+        chords = acordes7n9;
     } else if (lessonType === "69") {
-      chords = acordes69;
+        chords = acordes69;
     } else if (lessonType === "7b5") {
-      chords = acordes7b5;
+        chords = acordes7b5;
     } else {
-      console.error("Lección no encontrada:", lessonType);
-      return;
+        console.error("Lección no encontrada:", lessonType);
+        return;
     }
 
-
-  
     // Mostrar el modal
     currentChordIndex = 0;
     lessonModal.classList.remove("hidden");
     introSlide.style.display = "block";
     chordSlide.style.display = "none";
+    quizSlide.style.display = "none";
     finalSlide.style.display = "none";
-  
+
     // Actualizar el nombre y la descripción de la lección
     const lessonNameText =
-      lessonType === "novena"
-        ? "Lección: Acordes de Novena"
-        : lessonType === "onceava"
-        ? "Lección: Acordes de Onceava"
-        : lessonType === "treceava"
-        ? "Lección: Acordes de Treceava"
-        : lessonType === "7n5"
-        ? "Lección: Acordes de 7#5"
-        : lessonType === "7n9"
-        ? "Lección: Acordes de 7#9"
-        : lessonType === "69"
-        ? "Lección: Acordes de 6/9"
-        : "Lección: Acordes de 7b5";
-
-        const lessonBriefText = 
         lessonType === "novena"
-          ? "Descubre cómo los acordes de novena añaden profundidad y riqueza al sonido, ofreciendo una experiencia armónica completa."
-          : lessonType === "onceava"
-          ? "Explora los acordes de onceava y su carácter etéreo y expansivo, ideales para composiciones modernas."
-          : lessonType === "treceava"
-          ? "Aprende a usar los acordes de treceava para crear armonías completas y complejas con profundidad tonal."
-          : lessonType === "7n5"
-          ? "Domina los acordes de 7#5, que combinan triada mayor, séptima menor y quinta aumentada para un sonido alterado y enigmático."
-          : lessonType === "7n9"
-          ? "Experimenta la tensión cromática que los acordes de 7#9 pueden agregar a tus progresiones musicales."
-          : lessonType === "69"
-          ? "Explora cómo los acordes de 6/9 mezclan suavidad y fluidez armónica al incorporar la sexta y la novena."
-          : "Descubre los acordes de 7b5, con quinta disminuida y séptima menor, que evocan un sonido exótico y disonante.";
-      
+            ? "Lección: Acordes de Novena"
+            : lessonType === "onceava"
+            ? "Lección: Acordes de Onceava"
+            : lessonType === "treceava"
+            ? "Lección: Acordes de Treceava"
+            : lessonType === "7n5"
+            ? "Lección: Acordes de 7#5"
+            : lessonType === "7n9"
+            ? "Lección: Acordes de 7#9"
+            : lessonType === "69"
+            ? "Lección: Acordes de 6/9"
+            : "Lección: Acordes de 7b5";
+
+    const lessonBriefText =
+        lessonType === "novena"
+            ? "Descubre cómo los acordes de novena añaden profundidad y riqueza al sonido, ofreciendo una experiencia armónica completa."
+            : lessonType === "onceava"
+            ? "Explora los acordes de onceava y su carácter etéreo y expansivo, ideales para composiciones modernas."
+            : lessonType === "treceava"
+            ? "Aprende a usar los acordes de treceava para crear armonías completas y complejas con profundidad tonal."
+            : lessonType === "7n5"
+            ? "Domina los acordes de 7#5, que combinan triada mayor, séptima menor y quinta aumentada para un sonido alterado y enigmático."
+            : lessonType === "7n9"
+            ? "Experimenta la tensión cromática que los acordes de 7#9 pueden agregar a tus progresiones musicales."
+            : lessonType === "69"
+            ? "Explora cómo los acordes de 6/9 mezclan suavidad y fluidez armónica al incorporar la sexta y la novena."
+            : "Descubre los acordes de 7b5, con quinta disminuida y séptima menor, que evocan un sonido exótico y disonante.";
+
     document.getElementById("lessonBrief").textContent = lessonBriefText;
     document.getElementById("lessonName").textContent = lessonNameText;
+}
+
+// Función para mostrar el siguiente acorde
+function showNextChord() {
+    if (currentChordIndex < chords.length - 1) {
+        currentChordIndex++;
+        updateChordDisplay();
+    } else {
+        showFinalSlide();
+    }
+}
+
+// Función para mostrar la slide final
+function showFinalSlide() {
+    introSlide.style.display = "none";
+    chordSlide.style.display = "none";
+    quizSlide.style.display = "none";
+    finalSlide.style.display = "block";
+
+    // Si es la lección de 7b5, mostrar el botón de finalizar curso
+    if (chords === acordes7b5) {
+        const finishButton = document.getElementById("finishLesson");
+        finishButton.textContent = "Finalizar Curso";
+        finishButton.classList.add("finalizar-btn");
+    }
+}
+
+// Función para generar el PDF del diploma
+async function generateDiplomaPDF(studentName) {
+    try {
+        // Crear el contenido del diploma
+        const diplomaContent = `
+            <div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #fff9e6 0%, #fff 100%); border: 20px solid #92471f; border-radius: 20px;">
+                <img src="imagenes/logo.png" style="width: 120px; margin-bottom: 20px;">
+                <h1 style="color: #92471f; font-size: 36px; margin: 20px 0;">Diploma de Finalización</h1>
+                <p style="font-size: 18px; margin: 20px 0;">Se otorga el presente diploma a:</p>
+                <h2 style="color: #92471f; font-size: 42px; margin: 20px 0; font-family: 'Brush Script MT', cursive;">${studentName}</h2>
+                <p style="font-size: 18px; margin: 20px 0;">Por haber completado exitosamente el curso de</p>
+                <h3 style="color: #92471f; font-size: 28px; margin: 20px 0;">Acordes Avanzados de Guitarra</h3>
+                <p style="font-size: 18px; margin: 20px 0;">Con dedicación y excelencia</p>
+                <p style="font-size: 16px; margin-top: 40px;">Fecha: ${new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                <p style="font-size: 12px; color: #666; margin-top: 20px;">Maestros: Edwin Campos, Roberto Campos, Yader Romero, Diego Avilés</p>
+            </div>
+        `;
+
+        // Crear un elemento temporal para renderizar el diploma
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = diplomaContent;
+        document.body.appendChild(tempDiv);
+
+        // Convertir el diploma a imagen
+        const canvas = await html2canvas(tempDiv.firstElementChild, {
+            scale: 2,
+            backgroundColor: null,
+            logging: false
+        });
+
+        // Crear el PDF
+        const pdf = new jspdf.jsPDF({
+            orientation: 'landscape',
+            unit: 'mm',
+            format: 'a4'
+        });
+
+        const imgWidth = 297; // A4 width in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.save(`Diploma_GuitarPro_${studentName}.pdf`);
+
+        // Limpiar el elemento temporal
+        document.body.removeChild(tempDiv);
+
+        // Mostrar mensaje de éxito
+        alert('¡Felicidades! Tu diploma ha sido generado exitosamente.');
+    } catch (error) {
+        console.error('Error al generar el diploma:', error);
+        alert('Hubo un error al generar el diploma. Por favor, inténtalo de nuevo.');
+    }
+}
+
+// Función para mostrar el quiz
+function showQuiz() {
+    const quizContent = `
+        <div class="quiz-container">
+            <h2>Quiz: Partes de la Guitarra</h2>
+            <div class="question-container">
+                <p class="question-type">${guitarPartsQuiz[currentQuestionIndex].type === 'truefalse' ? 'Verdadero/Falso' : 'Opción Múltiple'}</p>
+                <p class="question">${guitarPartsQuiz[currentQuestionIndex].question}</p>
+                <div class="options-container ${guitarPartsQuiz[currentQuestionIndex].type === 'truefalse' ? 'truefalse' : ''}">
+                    ${guitarPartsQuiz[currentQuestionIndex].options.map((option, index) => `
+                        <button class="option-btn" data-index="${index}">${option}</button>
+                    `).join('')}
+                </div>
+            </div>
+            <div class="quiz-progress">
+                Pregunta ${currentQuestionIndex + 1} de ${totalQuestions}
+            </div>
+        </div>
+    `;
+
+    // Mostrar el quiz en el modal
+    introSlide.style.display = "none";
+    chordSlide.style.display = "none";
+    finalSlide.style.display = "none";
+    
+    const quizSlide = document.createElement('div');
+    quizSlide.className = 'slide';
+    quizSlide.id = 'quizSlide';
+    quizSlide.innerHTML = quizContent;
+    
+    lessonModal.querySelector('.modal-window').appendChild(quizSlide);
+    quizSlide.style.display = "block";
+
+    // Agregar event listeners a los botones de opciones
+    const optionButtons = quizSlide.querySelectorAll('.option-btn');
+    optionButtons.forEach(button => {
+        button.addEventListener('click', handleAnswer);
+    });
+}
+
+// Función para manejar las respuestas
+function handleAnswer(event) {
+    const selectedAnswer = parseInt(event.target.getAttribute('data-index'));
+    const correctAnswer = guitarPartsQuiz[currentQuestionIndex].correctAnswer;
+
+    if (selectedAnswer === correctAnswer) {
+        score++;
+        event.target.classList.add('correct');
+    } else {
+        event.target.classList.add('incorrect');
+        const correctButton = document.querySelector(`[data-index="${correctAnswer}"]`);
+        correctButton.classList.add('correct');
+    }
+
+    // Deshabilitar todos los botones después de responder
+    const optionButtons = document.querySelectorAll('.option-btn');
+    optionButtons.forEach(button => {
+        button.disabled = true;
+    });
+
+    // Esperar 1 segundo antes de mostrar la siguiente pregunta
+    setTimeout(() => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < guitarPartsQuiz.length) {
+            showQuiz();
+        } else {
+            showQuizResults();
+        }
+    }, 1000);
+}
+
+// Función para calcular la nota
+function calculateGrade() {
+    const percentage = (score / totalQuestions) * 100;
+    let grade;
+    
+    if (percentage >= 90) {
+        grade = "A";
+    } else if (percentage >= 80) {
+        grade = "B";
+    } else if (percentage >= 70) {
+        grade = "C";
+    } else if (percentage >= 60) {
+        grade = "D";
+    } else {
+        grade = "F";
+    }
+    
+    return {
+        grade,
+        percentage,
+        score,
+        totalQuestions
+    };
+}
+
+// Función para mostrar los resultados del quiz
+function showQuizResults() {
+    const results = calculateGrade();
+    const quizSlide = document.getElementById('quizSlide');
+    const resultsContent = `
+        <div class="quiz-results">
+            <h2>Resultados del Quiz</h2>
+            <div class="grade-display">
+                <h3>Calificación: ${results.grade}</h3>
+                <p>Puntuación: ${results.score} de ${results.totalQuestions}</p>
+                <p>Porcentaje: ${results.percentage.toFixed(1)}%</p>
+            </div>
+            ${results.grade !== "F" ? `
+                <p class="success-message">¡Felicitaciones! Has aprobado el quiz.</p>
+                <button id="continueBtn" class="btn-1">Continuar con el Curso</button>
+            ` : `
+                <p class="error-message">Necesitas estudiar más las partes de la guitarra.</p>
+                <button id="retryBtn" class="btn-1">Intentar de nuevo</button>
+            `}
+        </div>
+    `;
+
+    quizSlide.innerHTML = resultsContent;
+
+    // Agregar event listeners a los botones
+    const continueBtn = document.getElementById('continueBtn');
+    const retryBtn = document.getElementById('retryBtn');
+
+    if (continueBtn) {
+        continueBtn.addEventListener('click', () => {
+            quizSlide.remove();
+            window.location.href = 'avanzado.html';
+        });
+    }
+
+    if (retryBtn) {
+        retryBtn.addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            score = 0;
+            showQuiz();
+        });
+    }
+}
+
+// Agregar event listeners cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', function() {
+    // Event listener para los botones de aprender
+    const learnButtons = document.querySelectorAll('.btn-2[data-modal]');
+    learnButtons.forEach(button => {
+        button.addEventListener('click', showModal);
+    });
+
+    // Event listener para el botón de cerrar modal
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            lessonModal.classList.add("hidden");
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+        });
+    }
+
+    // Event listener para el botón de iniciar lección
+    const startButton = document.getElementById("startLesson");
+    if (startButton) {
+        startButton.addEventListener('click', () => {
+            introSlide.style.display = "none";
+            chordSlide.style.display = "block";
+            updateChordDisplay();
+        });
+    }
+
+    // Event listener para el botón de finalizar
+    const finishButton = document.getElementById("finishLesson");
+    if (finishButton) {
+        finishButton.addEventListener('click', () => {
+            if (chords === acordes7b5) {
+                const userName = prompt('Por favor, ingresa tu nombre para el diploma:');
+                if (userName) {
+                    generateDiplomaPDF(userName);
+                }
+            } else {
+                lessonModal.classList.add("hidden");
+            }
+        });
+    }
+
+    // Event listener para el botón de sonido
+    const playSoundButton = document.getElementById("playSound");
+    if (playSoundButton) {
+        playSoundButton.addEventListener('click', () => {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+            const currentChord = chords[currentChordIndex];
+            currentAudio = new Audio(currentChord.sound);
+            currentAudio.play();
+        });
+    }
+
+    // Event listeners para navegación entre acordes
+    const prevButton = document.getElementById("prevChord");
+    const nextButton = document.getElementById("nextChord");
+
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            if (currentChordIndex > 0) {
+                currentChordIndex--;
+                updateChordDisplay();
+            }
+        });
+    }
+
+    if (nextButton) {
+        nextButton.addEventListener('click', showNextChord);
+    }
+});
+
+// Función para cargar el contenido del quiz dinámicamente
+function cargarQuizArray() {
+  fetch('QuizArray.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('No se pudo cargar el quiz');
+      }
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById('contenedor-quiz').innerHTML = html;
+    })
+    .catch(error => {
+      console.error('Error al cargar el quiz:', error);
+      document.getElementById('contenedor-quiz').innerHTML = '<p>No se pudo cargar el quiz.</p>';
+    });
+}
+
+  function nextChordHandler() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
   }
+
+  if (currentChordIndex < chords.length - 1) {
+    currentChordIndex++;
+    updateChordSlide();
+  } else {
+    chordSlide.style.display = "none";
+    quizSlide.style.display = "block";  // Mostrar quizSlide aquí
+  }
+}
