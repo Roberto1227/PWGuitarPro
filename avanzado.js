@@ -469,6 +469,7 @@ function showModal(event) {
     lessonModal.classList.remove("hidden");
     introSlide.style.display = "block";
     chordSlide.style.display = "none";
+    quizSlide.style.display = "none";
     finalSlide.style.display = "none";
 
     // Actualizar el nombre y la descripción de la lección
@@ -520,6 +521,7 @@ function showNextChord() {
 function showFinalSlide() {
     introSlide.style.display = "none";
     chordSlide.style.display = "none";
+    quizSlide.style.display = "none";
     finalSlide.style.display = "block";
 
     // Si es la lección de 7b5, mostrar el botón de finalizar curso
@@ -799,3 +801,36 @@ document.addEventListener('DOMContentLoaded', function() {
         nextButton.addEventListener('click', showNextChord);
     }
 });
+
+// Función para cargar el contenido del quiz dinámicamente
+function cargarQuizArray() {
+  fetch('QuizArray.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('No se pudo cargar el quiz');
+      }
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById('contenedor-quiz').innerHTML = html;
+    })
+    .catch(error => {
+      console.error('Error al cargar el quiz:', error);
+      document.getElementById('contenedor-quiz').innerHTML = '<p>No se pudo cargar el quiz.</p>';
+    });
+}
+
+  function nextChordHandler() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
+
+  if (currentChordIndex < chords.length - 1) {
+    currentChordIndex++;
+    updateChordSlide();
+  } else {
+    chordSlide.style.display = "none";
+    quizSlide.style.display = "block";  // Mostrar quizSlide aquí
+  }
+}

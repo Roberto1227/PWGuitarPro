@@ -409,6 +409,7 @@ const acordes7Mayores = [
     lessonModal.classList.remove("hidden");
     introSlide.style.display = "block";
     chordSlide.style.display = "none";
+    quizSlide.style.display = "none";
     finalSlide.style.display = "none";
   
     const lessonNameText = lessonType.includes("Suspendidos")

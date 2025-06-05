@@ -36,49 +36,58 @@
                 <img src="Acordes/Avanzado/nov.png" alt="Acordes de 9">
                 <h3>Acordes de Novena (Do, Re, Mi, Fa, Sol, La, Si)</h3>
                 <p>Incorporan la novena (segunda extendida) para añadir profundidad y riqueza al sonido.</p>
-                <button class="btn-2" data-modal="novena">Aprender</button>
+                <button class="btn-2" data-leccion="14" data-modal="novena">Aprender</button>
+
             </div>
             
             <div class="tarjeta">
                 <img src="Acordes/Avanzado/once.png" alt="Acordes 11">
                 <h3>Acordes de Onceava (Do, Re, Mi, Fa, Sol, La, Si)</h3>
                 <p>Incluyen la onceava (cuarta extendida), dando un carácter etéreo y expansivo.</p>
-                <button class="btn-2" data-modal="onceava">Aprender</button>
+               
+                  <button class="btn-2" data-leccion="15" data-modal="onceava">Aprender</button>
+                
             </div>
             
             <div class="tarjeta">
                 <img src="Acordes/Avanzado/tre.png" alt="Acordes de 13">
                 <h3>Acordes de Treceava (Do, Re, Mi, Fa, Sol, La, Si)</h3>
                 <p>Sumando la treceava (sexta extendida), producen un sonido lleno y complejo.</p>
-                <button class="btn-2" data-modal="treceava">Aprender</button>
+                <button class="btn-2" data-leccion="16" data-modal="treceava">Aprender</button>
+
             </div>
             
             <div class="tarjeta">
                 <img src="Acordes/Avanzado/75.png" alt="Acordes 7#5">
                 <h3>Acordes de 7#5 (Do, Re, Mi, Fa, Sol, La, Si)</h3>
                 <p>Combinan la triada mayor, séptima menor y quinta aumentada, creando un efecto enigmático y alterado.</p>
-                <button class="btn-2" data-modal="7n5">Aprender</button>
+                
+                <button class="btn-2" data-leccion="17" data-modal="7n5">Aprender</button>
+
             </div>
             
             <div class="tarjeta">
                 <img src="Acordes/Avanzado/79.png" alt="Acordes 7#9">
                 <h3>Acordes 7#9 (Do, Re, Mi, Fa, Sol, La, Si)</h3>
                 <p>Añaden una novena aumentada a la triada mayor con séptima menor, ofreciendo tensión cromática.</p>
-                <button class="btn-2" data-modal="7n9">Aprender</button>
+                <button class="btn-2" data-leccion="18" data-modal="7n9">Aprender</button>
+
             </div>
             
             <div class="tarjeta">
                 <img src="Acordes/Avanzado/69.png" alt="Acordes 6/9">
                 <h3>Acordes de 6/9 (Do, Re, Mi, Fa, Sol, La, Si)</h3>
                 <p>Mezclan la sexta y novena con la triada mayor, aportando suavidad y fluidez.</p>
-                <button class="btn-2" data-modal="69">Aprender</button>
+                <button class="btn-2" data-leccion="19" data-modal="69">Aprender</button>
+
             </div>
             
             <div class="tarjeta">
                 <img src="Acordes/Avanzado/7b5.png" alt="Acordes 7b5">
                 <h3>Acordes 7B5 (Do, Re, Mi, Fa, Sol, La, Si)</h3>
                 <p>Incorporan una quinta disminuida junto a la triada mayor y séptima menor, evocando un sonido exótico y disonante.</p>
-                <button class="btn-2" data-modal="7b5">Aprender</button>
+                <button class="btn-2" data-leccion="20" data-modal="7b5">Aprender</button>
+
             </div>
             
 
@@ -127,6 +136,13 @@
           <button id="nextChord" class="nav-btn">Siguiente</button>
         </div>
       </div>
+
+      <!-- Slide del Quiz -->
+<div class="slide" id="quizSlide" style="display: none;">
+  <h2>Quiz de la Lección</h2>
+<iframe id="quizFrame" src="QuizArray.html" style="width:100%; height:600px; border: 3px solid saddlebrown; border-radius: 8px;"></iframe>  
+<button id="finishQuiz" class="finish-btn">Finalizar Quiz</button>
+</div>
   
       <!-- Slide Final -->
       <div class="slide" id="finalSlide" style="display: none;">
@@ -170,5 +186,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="avanzado.js"></script>
+       <script src="QuizArray.js"></script>
+       
+<script src="basico.js"></script>
+
 </body>
 </html>
