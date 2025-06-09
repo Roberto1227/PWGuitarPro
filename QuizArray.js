@@ -13,11 +13,13 @@ const quizzesPorLeccion = {
     { question: "¿Cual es la cuerda que se deja al aire en el acorde Mi Mayor?", answers: ["Primera y tercera", "Primera, segunda y Sexta", "Sexta"], correct: 1 },
   ],
   2: [
-    { question: "hola2", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
-    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
-    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
-  ],
-  3: [
+    
+    { image: "Acordes/basico/7/QuizSOl.png",  question: "Que acorde es este?", answers: ["Mi menor", "Sol mayor", "Re alargado"], correct: 1,  },
+    { question: "¿Como se toca FA Mayor?", answers: [ { image: "Acordes/basico/7/QuizFamayor.png"}, { image: "Acordes/basico/7/QuizSimayor.png"}, { image: "Acordes/basico/7/QuizDomenor.png"}] , correct: 0 }, 
+    { question: "¿Que acorde nesecita una Cejilla?", answers: ["Do mayor", "La", "Si mayor"], correct: 2 },
+    { question: "¿Cual es la cuerda que se deja al aire en el acorde Sol Mayor", answers: ["Cuarta, primera y segunda", "Cuarta, Quinta y Sexta", "segunda y tercera"], correct: 1 }
+ ],
+    3: [
     { question: "3¿waoaoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
     { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
     { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
@@ -132,7 +134,21 @@ function loadQuiz() {
   questions.forEach((q, index) => {
     const questionEl = document.createElement("div");
     questionEl.classList.add("question");
-    questionEl.textContent = `${index + 1}. ${q.question}`;
+
+    // Añadir texto de la pregunta
+    const textoPregunta = document.createElement("p");
+    textoPregunta.textContent = `${index + 1}. ${q.question}`;
+    questionEl.appendChild(textoPregunta);
+
+    // Añadir imagen si existe
+    if (q.image) {
+      const img = document.createElement("img");
+      img.src = q.image;
+      img.alt = "Imagen de la pregunta";
+      img.style.maxWidth = "100%";
+      img.style.margin = "10px 0";
+      questionEl.appendChild(img);
+    }
 
     const answersEl = document.createElement("div");
     answersEl.classList.add("answers");
@@ -140,7 +156,31 @@ function loadQuiz() {
     q.answers.forEach((answer, i) => {
       const answerEl = document.createElement("div");
       answerEl.classList.add("answer");
-      answerEl.textContent = answer;
+
+      let texto = "";
+      let imgSrc = null;
+
+      if (typeof answer === "string") {
+        texto = answer;
+      } else if (typeof answer === "object") {
+        texto = answer.text || "";
+        imgSrc = answer.image || null;
+      }
+
+      const textoEl = document.createElement("span");
+      textoEl.textContent = texto;
+      answerEl.appendChild(textoEl);
+
+      if (imgSrc) {
+        const img = document.createElement("img");
+        img.src = imgSrc;
+        img.alt = "Imagen respuesta";
+        img.style.maxWidth = "175px";
+        img.style.display = "block";
+        img.style.marginTop = "8px";
+        answerEl.appendChild(img);
+      }
+
       answerEl.onclick = () => selectAnswer(index, i, answerEl);
       answersEl.appendChild(answerEl);
     });
@@ -149,6 +189,7 @@ function loadQuiz() {
     quizContainer.appendChild(answersEl);
   });
 }
+
 
 // Selección de respuesta
 function selectAnswer(questionIndex, answerIndex, element) {
@@ -242,3 +283,7 @@ window.onload = () => {
 };
 
 window.cargarLeccion = cargarLeccion;
+
+
+let currentQuestion = 0;
+
