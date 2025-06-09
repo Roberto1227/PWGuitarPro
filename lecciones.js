@@ -52,7 +52,9 @@ function updateCardStates() {
     if (progress.partesGuitarra) {
         document.getElementById('nivel-basico').classList.remove('locked');
         document.getElementById('nivel-basico').classList.add('unlocked');
-        document.querySelector('#nivel-basico .btn-2').classList.remove('disabled');
+        // Habilitar todos los botones en la tarjeta básica
+        const basicButtons = document.querySelectorAll('#nivel-basico .btn-2');
+        basicButtons.forEach(btn => btn.classList.remove('disabled'));
     }
     
     // Intermedio desbloqueado si básico completado
@@ -60,17 +62,19 @@ function updateCardStates() {
         const nivelMedio = document.getElementById('nivel-medio');
         nivelMedio.classList.remove('locked');
         nivelMedio.classList.add('unlocked');
-        const btnMedio = nivelMedio.querySelector('.btn-2');
-        if (btnMedio) {
-            btnMedio.classList.remove('disabled');
-        }
+        // Habilitar todos los botones en la tarjeta intermedia
+        const medioButtons = nivelMedio.querySelectorAll('.btn-2');
+        medioButtons.forEach(btn => btn.classList.remove('disabled'));
     }
     
     // Avanzado desbloqueado si intermedio completado
     if (progress.nivelMedio) {
-        document.getElementById('nivel-avanzado').classList.remove('locked');
-        document.getElementById('nivel-avanzado').classList.add('unlocked');
-        document.querySelector('#nivel-avanzado .btn-2').classList.remove('disabled');
+        const nivelAvanzado = document.getElementById('nivel-avanzado');
+        nivelAvanzado.classList.remove('locked');
+        nivelAvanzado.classList.add('unlocked');
+        // Habilitar todos los botones en la tarjeta avanzada
+        const avanzadoButtons = nivelAvanzado.querySelectorAll('.btn-2');
+        avanzadoButtons.forEach(btn => btn.classList.remove('disabled'));
     }
 }
 
