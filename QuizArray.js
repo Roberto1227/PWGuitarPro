@@ -7,17 +7,13 @@ let question = [];
 const quizzesPorLeccion = {
   1: [
     { question: "¿Qué lecciones aprendiste?", answers: ["Do Mayor, Re mayor, La mayor, Mi mayor", "La Menor, Sol mayor", "Beta 4, Sol recio"], correct: 0 },
-    { question: "¿Cual es la cuerda que se deja al aire en el acorde Do?", answers: ["Re", "Mi", "Do"], correct: 0 },
-    { question: "¿?", answers: ["Mi", "La", "Re"], correct: 0 },
-    { question: "¿?", answers: ["Do Mayor", "La Menor", "Sol Mayor"], correct: 0 },
-    { question: "¿?", answers: ["Re", "Mi", "Do"], correct: 0 },
-    { question: "¿?", answers: ["Mi", "La", "Re"], correct: 0 },
-    { question: "¿?", answers: ["Do Mayor", "La Menor", "Sol Mayor"], correct: 0 },
-    { question: "¿?", answers: ["Re", "Mi", "Do"], correct: 0 },
-    { question: "¿?", answers: ["Mi", "La", "Re"], correct: 0 }
+    { question: "¿Cual es la cuerda que no se toca en el acorde Do mayor?", answers: ["Sexta", "Primera", "Tercera"], correct: 0 },
+    { question: "¿Cual es la cuerda que se deja al aire en el acorde Re Mayor?", answers: ["Primera y Cuarta", "Quinta y Segunda", "Cuarta"], correct: 2 },
+    { question: "¿Cual es la cuerda que no se toca en el acorde La Mayor?", answers: ["primera", "Tercera", "Sexta"], correct: 0 },
+    { question: "¿Cual es la cuerda que se deja al aire en el acorde Mi Mayor?", answers: ["Primera y tercera", "Primera, segunda y Sexta", "Sexta"], correct: 1 },
   ],
   2: [
-    { question: "2¿Qué acordes forman una progresión I-IV-V?", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
+    { question: "hola2", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
     { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
     { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
   ],
@@ -102,11 +98,6 @@ const quizzesPorLeccion = {
     { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
   ],
     19: [
-    { question: "6¿waadadai...kwdoaoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
-    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
-    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
-  ],
-    20: [
     { question: "6¿waadadai...kwdoaoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
     { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
     { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
