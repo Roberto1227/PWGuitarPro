@@ -147,17 +147,30 @@
       <!-- Slide Final -->
       <div class="slide" id="finalSlide" style="display: none;">
         <div class="diploma-container">
-            <div class="diploma-header">
-                <img src="imagenes/logo.png" alt="GuitarPro Logo" class="logo-diploma">
-                <h2>¡Felicitaciones!</h2>
-            </div>
+            <h2 class="diploma-title">¡Felicitaciones!</h2>
             <div class="mascota-felicidades">
-                <img src="Imagenes/Mascota v2.png" alt="Mascota" class="mascota-diploma">
+                <div class="mascota-logo-container">
+                    <img src="Imagenes/Mascota v2.png" alt="Mascota" class="mascota-diploma">
+                    <img src="imagenes/logo.png" alt="GuitarPro Logo" class="logo-diploma">
+                </div>
                 <p class="mensaje-felicidades">¡Has completado con éxito todas las lecciones avanzadas! ¡Eres un verdadero maestro de la guitarra! 🎸</p>
             </div>
             <div class="diploma-content">
-                <h3>Diploma de Guitarrista Avanzado</h3>
-                <p>Este diploma certifica que has dominado todos los acordes avanzados y estás listo para crear tu propia música.</p>
+                <h3 class="diploma-header">Diploma de Guitarrista Avanzado</h3>
+                <div class="diploma-text">
+                    <p class="diploma-main-text">Este diploma certifica que has dominado todos los acordes avanzados y estás listo para crear tu propia música.</p>
+                    <p class="diploma-date">Fecha: <span id="currentDate"></span></p>
+                </div>
+                <div class="signatures-container">
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <p>Firma del Instructor</p>
+                    </div>
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <p>Firma del Estudiante</p>
+                    </div>
+                </div>
             </div>
             <button id="finishLesson" class="finish-btn">Finalizar</button>
         </div>

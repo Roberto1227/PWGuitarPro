@@ -469,7 +469,6 @@ function showModal(event) {
     lessonModal.classList.remove("hidden");
     introSlide.style.display = "block";
     chordSlide.style.display = "none";
-    quizSlide.style.display = "none";
     finalSlide.style.display = "none";
 
     // Actualizar el nombre y la descripción de la lección
@@ -507,7 +506,7 @@ function showModal(event) {
     document.getElementById("lessonName").textContent = lessonNameText;
 }
 
-// Función para mostrar el siguiente acorde
+// Función para mostrar la siguiente diapositiva
 function showNextChord() {
     if (currentChordIndex < chords.length - 1) {
         currentChordIndex++;
@@ -521,63 +520,95 @@ function showNextChord() {
 function showFinalSlide() {
     introSlide.style.display = "none";
     chordSlide.style.display = "none";
-    quizSlide.style.display = "none";
     finalSlide.style.display = "block";
 
-    // Si es la lección de 7b5, mostrar el botón de finalizar curso
-    if (chords === acordes7b5) {
-        const finishButton = document.getElementById("finishLesson");
-        finishButton.textContent = "Finalizar Curso";
-        finishButton.classList.add("finalizar-btn");
-    }
+    // Agregar campo para el nombre del estudiante
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.id = 'studentName';
+    nameInput.placeholder = 'Ingresa tu nombre';
+    nameInput.className = 'name-input';
+    
+    const finalContent = finalSlide.querySelector('p');
+    finalContent.innerHTML = 'Has completado la lección.<br>Ingresa tu nombre para generar tu diploma:';
+    finalContent.appendChild(nameInput);
 }
 
 // Función para generar el PDF del diploma
 async function generateDiplomaPDF(studentName) {
     try {
-        // Crear el contenido del diploma
-        const diplomaContent = `
-            <div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #fff9e6 0%, #fff 100%); border: 20px solid #92471f; border-radius: 20px;">
-                <img src="imagenes/logo.png" style="width: 120px; margin-bottom: 20px;">
-                <h1 style="color: #92471f; font-size: 36px; margin: 20px 0;">Diploma de Finalización</h1>
-                <p style="font-size: 18px; margin: 20px 0;">Se otorga el presente diploma a:</p>
-                <h2 style="color: #92471f; font-size: 42px; margin: 20px 0; font-family: 'Brush Script MT', cursive;">${studentName}</h2>
-                <p style="font-size: 18px; margin: 20px 0;">Por haber completado exitosamente el curso de</p>
-                <h3 style="color: #92471f; font-size: 28px; margin: 20px 0;">Acordes Avanzados de Guitarra</h3>
-                <p style="font-size: 18px; margin: 20px 0;">Con dedicación y excelencia</p>
-                <p style="font-size: 16px; margin-top: 40px;">Fecha: ${new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                <p style="font-size: 12px; color: #666; margin-top: 20px;">Maestros: Edwin Campos, Roberto Campos, Yader Romero, Diego Avilés</p>
-            </div>
-        `;
-
-        // Crear un elemento temporal para renderizar el diploma
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = diplomaContent;
-        document.body.appendChild(tempDiv);
-
-        // Convertir el diploma a imagen
-        const canvas = await html2canvas(tempDiv.firstElementChild, {
-            scale: 2,
-            backgroundColor: null,
-            logging: false
-        });
-
-        // Crear el PDF
-        const pdf = new jspdf.jsPDF({
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({
             orientation: 'landscape',
             unit: 'mm',
             format: 'a4'
         });
 
-        const imgWidth = 297; // A4 width in mm
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        // Cargar las imágenes
+        const mascotImg = await loadImage('Imagenes/Mascota v2.png');
+        const logoImg = await loadImage('imagenes/logo.png');
 
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, imgWidth, imgHeight);
-        pdf.save(`Diploma_GuitarPro_${studentName}.pdf`);
+        // Fondo con gradiente
+        doc.setFillColor(245, 247, 250);
+        doc.rect(0, 0, 297, 210, 'F');
 
-        // Limpiar el elemento temporal
-        document.body.removeChild(tempDiv);
+        // Agregar mascota y logo en las esquinas superiores
+        doc.addImage(mascotImg, 'PNG', 20, 20, 40, 40);
+        doc.addImage(logoImg, 'PNG', 237, 20, 40, 40);
 
+        // Título principal
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(36);
+        doc.setTextColor(44, 62, 80);
+        doc.text('¡Felicitaciones!', 148.5, 50, { align: 'center' });
+
+        // Título del diploma
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(28);
+        doc.text('Diploma de Guitarrista Avanzado', 148.5, 70, { align: 'center' });
+
+        // Nombre del estudiante
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(24);
+        doc.setTextColor(52, 73, 94);
+        doc.text(studentName || 'Estudiante', 148.5, 90, { align: 'center' });
+
+        // Texto principal
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(14);
+        doc.text('Este diploma certifica que has dominado todos los acordes avanzados', 148.5, 110, { align: 'center' });
+        doc.text('y estás listo para crear tu propia música.', 148.5, 120, { align: 'center' });
+
+        // Fecha
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const currentDate = new Date().toLocaleDateString('es-ES', options);
+        doc.setFont('helvetica', 'italic');
+        doc.setFontSize(16);
+        doc.text(`Fecha: ${currentDate}`, 148.5, 140, { align: 'center' });
+
+        // Espacios para firmas
+        doc.setDrawColor(44, 62, 80);
+        doc.setLineWidth(0.5);
+
+        // Líneas de firma de los instructores
+        const instructors = [
+            { name: 'Edwin Campos', x: 40 },
+            { name: 'Roberto Chavez', x: 100 },
+            { name: 'Diego Aviles', x: 160 },
+            { name: 'Yader Romero', x: 220 }
+        ];
+
+        // Dibujar líneas de firma y nombres
+        instructors.forEach(instructor => {
+            doc.line(instructor.x, 160, instructor.x + 40, 160);
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(10);
+            doc.text(instructor.name, instructor.x + 20, 170, { align: 'center' });
+        });
+
+        // Guardar el PDF
+        doc.save('Diploma_GuitarPro_Avanzado.pdf');
+        
         // Mostrar mensaje de éxito
         alert('¡Felicidades! Tu diploma ha sido generado exitosamente.');
     } catch (error) {
@@ -586,295 +617,69 @@ async function generateDiplomaPDF(studentName) {
     }
 }
 
-// Función para mostrar el quiz
-function showQuiz() {
-    const quizContent = `
-        <div class="quiz-container">
-            <h2>Quiz: Partes de la Guitarra</h2>
-            <div class="question-container">
-                <p class="question-type">${guitarPartsQuiz[currentQuestionIndex].type === 'truefalse' ? 'Verdadero/Falso' : 'Opción Múltiple'}</p>
-                <p class="question">${guitarPartsQuiz[currentQuestionIndex].question}</p>
-                <div class="options-container ${guitarPartsQuiz[currentQuestionIndex].type === 'truefalse' ? 'truefalse' : ''}">
-                    ${guitarPartsQuiz[currentQuestionIndex].options.map((option, index) => `
-                        <button class="option-btn" data-index="${index}">${option}</button>
-                    `).join('')}
-                </div>
-            </div>
-            <div class="quiz-progress">
-                Pregunta ${currentQuestionIndex + 1} de ${totalQuestions}
-            </div>
-        </div>
-    `;
-
-    // Mostrar el quiz en el modal
-    introSlide.style.display = "none";
-    chordSlide.style.display = "none";
-    finalSlide.style.display = "none";
-    
-    const quizSlide = document.createElement('div');
-    quizSlide.className = 'slide';
-    quizSlide.id = 'quizSlide';
-    quizSlide.innerHTML = quizContent;
-    
-    lessonModal.querySelector('.modal-window').appendChild(quizSlide);
-    quizSlide.style.display = "block";
-
-    // Agregar event listeners a los botones de opciones
-    const optionButtons = quizSlide.querySelectorAll('.option-btn');
-    optionButtons.forEach(button => {
-        button.addEventListener('click', handleAnswer);
+// Función auxiliar para cargar imágenes
+function loadImage(src) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = src;
     });
 }
 
-// Función para manejar las respuestas
-function handleAnswer(event) {
-    const selectedAnswer = parseInt(event.target.getAttribute('data-index'));
-    const correctAnswer = guitarPartsQuiz[currentQuestionIndex].correctAnswer;
-
-    if (selectedAnswer === correctAnswer) {
-        score++;
-        event.target.classList.add('correct');
-    } else {
-        event.target.classList.add('incorrect');
-        const correctButton = document.querySelector(`[data-index="${correctAnswer}"]`);
-        correctButton.classList.add('correct');
-    }
-
-    // Deshabilitar todos los botones después de responder
-    const optionButtons = document.querySelectorAll('.option-btn');
-    optionButtons.forEach(button => {
-        button.disabled = true;
-    });
-
-    // Esperar 1 segundo antes de mostrar la siguiente pregunta
-    setTimeout(() => {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < guitarPartsQuiz.length) {
-            showQuiz();
-        } else {
-            showQuizResults();
-        }
-    }, 1000);
-}
-
-// Función para calcular la nota
-function calculateGrade() {
-    const percentage = (score / totalQuestions) * 100;
-    let grade;
-    
-    if (percentage >= 90) {
-        grade = "A";
-    } else if (percentage >= 80) {
-        grade = "B";
-    } else if (percentage >= 70) {
-        grade = "C";
-    } else if (percentage >= 60) {
-        grade = "D";
-    } else {
-        grade = "F";
-    }
-    
-    return {
-        grade,
-        percentage,
-        score,
-        totalQuestions
-    };
-}
-
-// Función para mostrar los resultados del quiz
-function showQuizResults() {
-    const results = calculateGrade();
-    const quizSlide = document.getElementById('quizSlide');
-    const resultsContent = `
-        <div class="quiz-results">
-            <h2>Resultados del Quiz</h2>
-            <div class="grade-display">
-                <h3>Calificación: ${results.grade}</h3>
-                <p>Puntuación: ${results.score} de ${results.totalQuestions}</p>
-                <p>Porcentaje: ${results.percentage.toFixed(1)}%</p>
-            </div>
-            ${results.grade !== "F" ? `
-                <p class="success-message">¡Felicitaciones! Has aprobado el quiz.</p>
-                <button id="continueBtn" class="btn-1">Continuar con el Curso</button>
-            ` : `
-                <p class="error-message">Necesitas estudiar más las partes de la guitarra.</p>
-                <button id="retryBtn" class="btn-1">Intentar de nuevo</button>
-            `}
-        </div>
-    `;
-
-    quizSlide.innerHTML = resultsContent;
-
-    // Agregar event listeners a los botones
-    const continueBtn = document.getElementById('continueBtn');
-    const retryBtn = document.getElementById('retryBtn');
-
-    if (continueBtn) {
-        continueBtn.addEventListener('click', () => {
-            quizSlide.remove();
-            window.location.href = 'avanzado.html';
-        });
-    }
-
-    if (retryBtn) {
-        retryBtn.addEventListener('click', () => {
-            currentQuestionIndex = 0;
-            score = 0;
-            showQuiz();
-        });
-    }
-}
-
-// Agregar event listeners cuando el DOM esté cargado
-document.addEventListener('DOMContentLoaded', function() {
-    // Event listener para los botones de aprender
-    const learnButtons = document.querySelectorAll('.btn-2[data-modal]');
-    learnButtons.forEach(button => {
+// Inicializar los event listeners cuando se carga el documento
+document.addEventListener('DOMContentLoaded', () => {
+    // Agregar event listeners a los botones de lección
+    document.querySelectorAll('.btn-2').forEach(button => {
         button.addEventListener('click', showModal);
     });
 
-    // Event listener para el botón de cerrar modal
-    if (modalClose) {
-        modalClose.addEventListener('click', () => {
-            lessonModal.classList.add("hidden");
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-            }
-        });
-    }
+    // Agregar event listeners a los botones del modal
+    const modalClose = document.getElementById('modalClose');
+    const startLesson = document.getElementById('startLesson');
+    const prevChord = document.getElementById('prevChord');
+    const nextChord = document.getElementById('nextChord');
+    const finishLesson = document.getElementById('finishLesson');
 
-    // Event listener para el botón de iniciar lección
-    const startButton = document.getElementById("startLesson");
-    if (startButton) {
-        startButton.addEventListener('click', () => {
-            introSlide.style.display = "none";
-            chordSlide.style.display = "block";
-            updateChordDisplay();
-        });
-    }
-
-    // Event listener para el botón de finalizar
-    const finishButton = document.getElementById("finishLesson");
-    if (finishButton) {
-        finishButton.addEventListener('click', () => {
-            if (chords === acordes7b5) {
-                const userName = prompt('Por favor, ingresa tu nombre para el diploma:');
-                if (userName) {
-                    generateDiplomaPDF(userName);
-                }
-            } else {
-                lessonModal.classList.add("hidden");
-            }
-        });
-    }
-
-    // Event listener para el botón de sonido
-    const playSoundButton = document.getElementById("playSound");
-    if (playSoundButton) {
-        playSoundButton.addEventListener('click', () => {
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-            }
-            const currentChord = chords[currentChordIndex];
-            currentAudio = new Audio(currentChord.sound);
-            currentAudio.play();
-        });
-    }
-
-    // Event listeners para navegación entre acordes
-    const prevButton = document.getElementById("prevChord");
-    const nextButton = document.getElementById("nextChord");
-
-    if (prevButton) {
-        prevButton.addEventListener('click', () => {
-            if (currentChordIndex > 0) {
-                currentChordIndex--;
-                updateChordDisplay();
-            }
-        });
-    }
-
-    if (nextButton) {
-        nextButton.addEventListener('click', showNextChord);
-    }
-});
-
-
-
-function irASlide(numero) {
-  ocultarTodasLasSlides();
-  const slide = document.getElementById(`slide${numero}`);
-  slide.style.display = "block";
-
-  if (slide.id === "quizSlide") {
-    mostrarQuizSlide(); // <- Fuerza recarga del iframe limpio
-  }
-}
-
-function mostrarQuizSlide() {
-  document.querySelectorAll(".slide").forEach(slide => slide.style.display = "none");
-  document.getElementById("quizSlide").style.display = "block";
-
-  // ⬇️ Aquí se oculta el botón al abrir
-  document.getElementById("finishQuiz").style.display = "none";
-
-  const iframe = document.getElementById("quizFrame");
-  iframe.src = "QuizArray.html?nocache=" + Date.now();
-}
-
-document.querySelectorAll('.btn-2').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const leccionStr = btn.getAttribute('data-leccion');
-    const leccion = leccionStr ? parseInt(leccionStr) : null;
-
-    if (leccion === null || isNaN(leccion)) {
-      console.warn("Botón sin data-leccion válido");
-      return;
-    }
-
-    const modal = document.getElementById('quizSlide');
-    if (modal) modal.style.display = 'block';
-
-    const iframe = document.getElementById('quizFrame');
-    if (iframe) {
-      iframe.src = `QuizArray.html?leccion=${leccion}`;
-    }
-  });
-});
-
-
-// Función para cargar el contenido del quiz dinámicamente
-function cargarQuizArray() {
-  fetch('QuizArray.html')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('No se pudo cargar el quiz');
-      }
-      return response.text();
-    })
-    .then(html => {
-      document.getElementById('contenedor-quiz').innerHTML = html;
-    })
-    .catch(error => {
-      console.error('Error al cargar el quiz:', error);
-      document.getElementById('contenedor-quiz').innerHTML = '<p>No se pudo cargar el quiz.</p>';
+    if (modalClose) modalClose.addEventListener('click', () => {
+        lessonModal.classList.add('hidden');
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
     });
-}
 
-  function nextChordHandler() {
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
-  }
+    if (startLesson) startLesson.addEventListener('click', () => {
+        introSlide.style.display = 'none';
+        chordSlide.style.display = 'block';
+        updateChordDisplay();
+    });
 
-  if (currentChordIndex < chords.length - 1) {
-    currentChordIndex++;
-    updateChordSlide();
-  } else {
-    chordSlide.style.display = "none";
-    quizSlide.style.display = "block";  // Mostrar quizSlide aquí
-  }
-}
+    if (prevChord) prevChord.addEventListener('click', () => {
+        if (currentChordIndex > 0) {
+            currentChordIndex--;
+            updateChordDisplay();
+        }
+    });
+
+    if (nextChord) nextChord.addEventListener('click', () => {
+        if (currentChordIndex < chords.length - 1) {
+            currentChordIndex++;
+            updateChordDisplay();
+        } else {
+            showFinalSlide();
+        }
+    });
+
+    if (finishLesson) finishLesson.addEventListener('click', () => {
+        const studentName = document.getElementById('studentName')?.value || 'Estudiante';
+        lessonModal.classList.add('hidden');
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        // Generar el diploma con el nombre del estudiante
+        generateDiplomaPDF(studentName);
+    });
+});
