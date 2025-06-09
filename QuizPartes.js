@@ -1,30 +1,25 @@
     let questions = [
         {
-            question: "¿Cuál de los siguientes acordes es DO?",
-            answers: ["1",
-                      "2",
-                      "3"],
+            question: "¿Cuantas cuerdas tiene la guitarra?",
+            answers: ["8",
+                      "4",
+                      "6"],
+            correct: 2
+        },
+        {
+            question: "¿Cual es una parte de la guitarra?",
+            answers: ["Matarraya", "Tecla", "Clavijas"],
+            correct: 2
+        },
+        {
+            question: "Pequeñas divisiones metalicas en el mastil",
+            answers: ["Trastes", "Cuerdas", "Puente"],
             correct: 0
         },
         {
-            question: "¿Cuánto es 5 + 3?",
-            answers: ["6", "8", "10"],
+            question: "¿Cual no es una parte de la guitarra?",
+            answers: ["Trastes", "Castañeda", "Caja "],
             correct: 1
-        },
-        {
-            question: "Selecciona la imagen del Sol:",
-            answers: ["🌕", "☀️", "🌑"],
-            correct: 1
-        },
-        {
-            question: "¿Quién escribió 'Cien años de soledad'?",
-            answers: ["Pablo Neruda", "Gabriel García Márquez", "Mario Vargas Llosa"],
-            correct: 1
-        },
-        {
-            question: "¿Cuál es el metal más liviano?",
-            answers: ["Plomo", "Aluminio", "Litio"],
-            correct: 2
         }
     ];
 

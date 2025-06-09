@@ -802,6 +802,50 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
+function irASlide(numero) {
+  ocultarTodasLasSlides();
+  const slide = document.getElementById(`slide${numero}`);
+  slide.style.display = "block";
+
+  if (slide.id === "quizSlide") {
+    mostrarQuizSlide(); // <- Fuerza recarga del iframe limpio
+  }
+}
+
+function mostrarQuizSlide() {
+  document.querySelectorAll(".slide").forEach(slide => slide.style.display = "none");
+  document.getElementById("quizSlide").style.display = "block";
+
+  // ⬇️ Aquí se oculta el botón al abrir
+  document.getElementById("finishQuiz").style.display = "none";
+
+  const iframe = document.getElementById("quizFrame");
+  iframe.src = "QuizArray.html?nocache=" + Date.now();
+}
+
+document.querySelectorAll('.btn-2').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const leccionStr = btn.getAttribute('data-leccion');
+    const leccion = leccionStr ? parseInt(leccionStr) : null;
+
+    if (leccion === null || isNaN(leccion)) {
+      console.warn("Botón sin data-leccion válido");
+      return;
+    }
+
+    const modal = document.getElementById('quizSlide');
+    if (modal) modal.style.display = 'block';
+
+    const iframe = document.getElementById('quizFrame');
+    if (iframe) {
+      iframe.src = `QuizArray.html?leccion=${leccion}`;
+    }
+  });
+});
+
+
 // Función para cargar el contenido del quiz dinámicamente
 function cargarQuizArray() {
   fetch('QuizArray.html')
