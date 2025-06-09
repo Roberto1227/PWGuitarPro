@@ -7,7 +7,7 @@ let question = [];
 const quizzesPorLeccion = {
   1: [
     { question: "¿Qué lecciones aprendiste?", answers: ["Do Mayor, Re mayor, La mayor, Mi mayor", "La Menor, Sol mayor", "Beta 4, Sol recio"], correct: 0 },
-    { question: "¿?", answers: ["Re", "Mi", "Do"], correct: 0 },
+    { question: "¿Cual es la cuerda que se deja al aire en el acorde Do?", answers: ["Re", "Mi", "Do"], correct: 0 },
     { question: "¿?", answers: ["Mi", "La", "Re"], correct: 0 },
     { question: "¿?", answers: ["Do Mayor", "La Menor", "Sol Mayor"], correct: 0 },
     { question: "¿?", answers: ["Re", "Mi", "Do"], correct: 0 },
