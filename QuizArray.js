@@ -20,24 +20,51 @@ const quizzesPorLeccion = {
     { question: "¿Cual es la cuerda que se deja al aire en el acorde Sol Mayor", answers: ["Cuarta, primera y segunda", "Cuarta, Quinta y Sexta", "segunda y tercera"], correct: 1 }
  ],
     3: [
-    { question: "3¿waoaoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
-    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
-    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
+    { question: "¿Cuáles cuerdas se deben tocar para el acorde Re menor?", answers: ["Segunda, cuarta y quinta", "Primera, sexta y segunda", "Cuarta, tercera y quinta"], correct: 0 },
+    { question: "¿Qué posición debe tener el dedo 1 en el acorde Re menor?", answers: ["Cuerda 4, Traste 3", "Cuerda 1, Traste 1", "Cuerda 2, Traste 1"], correct: 1 },
+    { question: "¿Qué posición debe tener el dedo índice (1) en el acorde Do menor?", answers: ["Todas las cuerdas, traste 3", "Primera y segunda cuerda, traste 2", "Cuerda 6, traste 4"], correct: 0 },
+    { question: "¿Qué cuerda no se debe tocar en el acorde Do menor?", answers: ["Cuerda 3", "Cuerda 6", "Cuerda 1"], correct: 1 },
+    { question: "¿Qué posición debe tener el dedo medio (2) en el acorde Do menor?", answers: ["Cuerda 4, Traste 4", "Cuerda 5, Traste 5", "Cuerda 3, Traste 5"], correct: 0 },
+    { question: "¿Cuál es la cuerda al aire en el acorde Re menor?", answers: ["Cuerda 3", "Cuerda 4", "Cuerda 5"], correct: 1 },
+    { question: "¿Qué representa el símbolo 'X' en un diagrama de acordes?", answers: ["Cuerda que se toca al aire", "Cuerda que no se debe tocar", "Cuerda que se pisa con el dedo índice"], correct: 1 },
+    { question: "¿Qué posición debe tener el dedo anular (3) en el acorde Do menor?", answers: ["Cuerda 5, Traste 5", "Cuerda 4, Traste 3", "Cuerda 6, Traste 4"], correct: 0 }
   ],
   4: [
-    { question: "¿4waoaadwadadadadadadawdawdoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
-    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
-    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
+   { question: "¿Qué posición debe tener el dedo índice (1) en el acorde Sol menor?", answers: ["Cejilla en traste 3", "Cuerda 5, traste 5", "Cuerda 4, traste 3"], correct: 0 },
+    { question: "¿Qué dedo se coloca en la cuerda 5, traste 5 en el acorde Sol menor?", answers: ["Dedo 2", "Dedo 3", "Dedo 4"], correct: 1 },
+    { question: "¿Qué dedo se coloca en la cuerda 4, traste 5 en el acorde Sol menor?", answers: ["Dedo 1", "Dedo 2", "Dedo 4"], correct: 2 },
+    { question: "¿Qué posición debe tener el dedo índice (1) en el acorde Si menor?", answers: ["Cuerda 2, traste 1", "Cejilla en traste 2", "Cuerda 4, traste 3"], correct: 1 },
+    { question: "¿Qué dedo se coloca en la cuerda 2, traste 3 en el acorde Si menor?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 1 },
+    { question: "¿Qué dedo se coloca en la cuerda 4, traste 4 en el acorde Si menor?", answers: ["Dedo 2", "Dedo 3", "Dedo 4"], correct: 2 },
+    { question: "¿Qué posición debe tener el dedo índice (1) en el acorde Fa menor?", answers: ["Cejilla en traste 1", "Cuerda 5, traste 3", "Cuerda 4, traste 3"], correct: 0 },
+    { question: "¿Qué dedo se coloca en la cuerda 5, traste 3 en el acorde Fa menor?", answers: ["Dedo 2", "Dedo 3", "Dedo 4"], correct: 1 },
+    { question: "¿Qué dedo se coloca en la cuerda 4, traste 3 en el acorde Fa menor?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 2 },
+    { question: "¿Qué cuerda no se debe tocar en el acorde Fa menor?", answers: ["Cuerda 6", "Cuerda 5", "Cuerda 4"], correct: 0 },
   ],
   5: [
-    { question: "5¿waoaadaafereregegwdaoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
-    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
-    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 }
+    { question: "¿Qué posición debe tener el dedo índice (1) en el acorde Do7?", answers: ["Cuerda 2, traste 1", "Cuerda 4, traste 2", "Cuerda 3, traste 3"], correct: 0 },
+    { question: "¿Qué dedo se coloca en la cuerda 4, traste 2 en el acorde Do7?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 1 },
+    { question: "¿Qué posición debe tener el dedo índice (1) en el acorde Re7?", answers: ["Cuerda 3, traste 2", "Cuerda 2, traste 1", "Cuerda 1, traste 2"], correct: 1 },
+    { question: "¿Qué dedo se coloca en la cuerda 3, traste 2 en el acorde Re7?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 1 },
+    { question: "¿Qué cuerda no se debe tocar en el acorde Re7?", answers: ["Cuerda 6", "Cuerda 5", "Cuerda 4"], correct: 0 },
+    { question: "¿Qué posición debe tener el dedo índice (1) en el acorde La7?", answers: ["Cuerda 4, traste 2", "Cuerda 3, traste 2", "Cuerda 2, traste 1"], correct: 0 },
+    { question: "¿Qué dedo se coloca en la cuerda 2, traste 2 en el acorde La7?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 1 },
+    { question: "¿Cuántos dedos se usan para presionar cuerdas en el acorde La7?", answers: ["2", "3", "4"], correct: 0 },
+    { question: "¿Qué significa el término 'cejilla' en la guitarra?", answers: ["Presionar varias cuerdas con un solo dedo", "Tocar una cuerda al aire", "Usar el dedo meñique para presionar una cuerda"], correct: 0 },
+    { question: "¿Qué mensaje transmite la práctica de acordes como Re7 y Do7?", answers: ["La música es solo entretenimiento", "La música tiene el poder de transformar el mundo", "La música no requiere esfuerzo"], correct: 1 }
+
   ],
   6: [
-    { question: "6¿waadadai...kwdoaoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
-    { question: "¿Cuál es la duración de una negra?", answers: ["1 tiempo", "2 tiempos", "4 tiempos"], correct: 0 },
-    { question: "¿Qué nota es la quinta justa de Do?", answers: ["Sol", "Fa", "Mi"], correct: 0 },
+    { question: "¿Qué posición debe tener el dedo índice (1) en el acorde Sol7?", answers: ["Cuerda 1, traste 1", "Cuerda 5, traste 2", "Cuerda 6, traste 3"], correct: 0 },
+    { question: "¿Qué dedo se coloca en la cuerda 5, traste 2 en el acorde Sol7?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 1 },
+    { question: "¿Qué dedo se coloca en la cuerda 6, traste 3 en el acorde Sol7?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 2 },
+    { question: "¿Cuáles cuerdas se tocan al aire en el acorde Sol7?", answers: ["Cuerda 2, 3 y 4", "Cuerda 1 y 6", "Cuerda 5 y 4"], correct: 0 },
+    { question: "¿Qué posición debe tener el dedo índice (1) en el acorde Si7?", answers: ["Cuerda 4, traste 1", "Cuerda 5, traste 2", "Cuerda 3, traste 2"], correct: 0 },
+    { question: "¿Qué dedo se coloca en la cuerda 5, traste 2 en el acorde Si7?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 1 },
+    { question: "¿Qué dedo se coloca en la cuerda 3, traste 2 en el acorde Si7?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 2 },
+    { question: "¿Qué posición debe tener el dedo índice (1) en el acorde Fa7?", answers: ["Cejilla en traste 1", "Cuerda 2, traste 2", "Cuerda 4, traste 3"], correct: 0 },
+    { question: "¿Qué dedo se coloca en la cuerda 2, traste 2 en el acorde Fa7?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 1 },
+    { question: "¿Qué dedo se coloca en la cuerda 4, traste 3 en el acorde Fa7?", answers: ["Dedo 1", "Dedo 2", "Dedo 3"], correct: 2 },
     ],
     7: [
     { question: "6¿waadadai...kwdoaoao", answers: ["Do, Fa, Sol", "La, Re, Mi", "Sol, Do, Re"], correct: 0 },
