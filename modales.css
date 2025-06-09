@@ -235,3 +235,81 @@
     color: #333; /* Texto más neutral */
     margin: 0; /* Eliminar margen extra */
   }
+
+  /* Estilos para el diploma y la mascota */
+  .diploma-container {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .mascota-felicidades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+  }
+
+  .mascota-diploma {
+    width: 150px;
+    height: auto;
+    margin-bottom: 15px;
+    animation: bounce 2s infinite;
+  }
+
+  .mensaje-felicidades {
+    font-size: 1.2em;
+    color: #2c3e50;
+    margin: 15px 0;
+    line-height: 1.6;
+  }
+
+  .diploma-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+
+  .diploma-content h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+  }
+
+  .diploma-content p {
+    color: #34495e;
+    line-height: 1.6;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+  }
+
+  .diploma-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .logo-diploma {
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+  }
+
+  .diploma-header h2 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
